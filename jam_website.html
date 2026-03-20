@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>甜蜜農場 Sweet Farm｜手工果醬</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FDF6EE;
+      --warm-white: #FFFBF5;
+      --orange:   #E8773A;
+      --orange-light: #F4A261;
+      --orange-dark:  #C45B1E;
+      --red:      #C0392B;
+      --red-soft: #E07060;
+      --brown:    #8B4513;
+      --brown-light: #A0522D;
+      --green:    #6B8F5E;
+      --text-dark: #3D2314;
+      --text-mid:  #6B4226;
+      --text-light: #9C6B4E;
+      --shadow-sm: 0 2px 12px rgba(139,69,19,.10);
+      --shadow-md: 0 6px 30px rgba(139,69,19,.15);
+      --shadow-lg: 0 16px 60px rgba(139,69,19,.20);
+      --radius:   16px;
+      --radius-lg: 28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--orange-light); border-radius: 3px; }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(253,246,238,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232,119,58,.15);
+      transition: box-shadow .3s;
+    }
+    #navbar.scrolled { box-shadow: var(--shadow-sm); }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 2px 8px rgba(232,119,58,.4);
+    }
+    .nav-logo-text .cn { font-size: 16px; font-weight: 700; color: var(--text-dark); line-height:1.1; }
+    .nav-logo-text .en { font-size: 10px; font-weight: 400; letter-spacing: .12em; color: var(--text-light); text-transform: uppercase; }
+
+    .nav-menu { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-menu a {
+      display: block; padding: 8px 16px;
+      font-size: 14px; font-weight: 500; color: var(--text-mid);
+      text-decoration: none; border-radius: 20px;
+      transition: background .2s, color .2s;
+    }
+    .nav-menu a:hover { background: rgba(232,119,58,.12); color: var(--orange-dark); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark)) !important;
+      color: #fff !important; font-weight: 700 !important;
+      box-shadow: 0 2px 10px rgba(232,119,58,.35);
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,119,58,.45); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: .3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #FEF0DC 0%, #FDDBB4 40%, #F9C490 70%, #F4A261 100%);
+      padding: 100px 5% 60px;
+    }
+
+    .hero-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(60px); opacity: .35; pointer-events: none;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--red-soft); top: -120px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .blob-2 { width: 380px; height: 380px; background: var(--orange); bottom: -80px; left: -80px; animation: float 10s ease-in-out infinite reverse; }
+    .blob-3 { width: 260px; height: 260px; background: #F7C59F; top: 40%; left: 35%; animation: float 7s ease-in-out infinite 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-30px) scale(1.04); }
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(139,69,19,.08) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.6); border: 1px solid rgba(232,119,58,.3);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 12px; font-weight: 600; letter-spacing: .1em;
+      color: var(--orange-dark); text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-tag::before { content: '🌿'; font-size: 14px; }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.15;
+      color: var(--text-dark); margin-bottom: 16px;
+    }
+    .hero-title .accent { color: var(--orange-dark); position: relative; display: inline-block; }
+    .hero-title .accent::after {
+      content: '';
+      position: absolute; left: 0; bottom: 2px; right: 0;
+      height: 6px; background: rgba(232,119,58,.25); border-radius: 3px; z-index: -1;
+    }
+
+    .hero-en {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-style: italic; color: var(--orange-dark);
+      margin-bottom: 20px; letter-spacing: .04em;
+    }
+
+    .hero-desc {
+      font-size: 15px; line-height: 1.9;
+      color: var(--text-mid); margin-bottom: 36px; max-width: 440px;
+    }
+
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      color: #fff; font-size: 15px; font-weight: 700;
+      padding: 14px 32px; border-radius: 40px; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(232,119,58,.45);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(232,119,58,.55); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.65); border: 1.5px solid rgba(232,119,58,.4);
+      color: var(--orange-dark); font-size: 15px; font-weight: 600;
+      padding: 14px 28px; border-radius: 40px; text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background .25s, transform .25s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.9); transform: translateY(-3px); }
+
+    .hero-stats { display: flex; gap: 28px; margin-top: 32px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 900; color: var(--orange-dark); line-height: 1; }
+    .stat-label { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .jar-wrap { position: relative; animation: bobble 5s ease-in-out infinite; }
+    @keyframes bobble {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50%       { transform: translateY(-18px) rotate(2deg); }
+    }
+
+    .jar-svg { width: min(320px, 80vw); filter: drop-shadow(0 20px 40px rgba(139,69,19,.3)); }
+
+    .badge {
+      position: absolute;
+      background: #fff; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-weight: 900; box-shadow: var(--shadow-md);
+      animation: spin-badge 12s linear infinite;
+    }
+    .badge-1 { width: 80px; height: 80px; top: 10%; right: -10px; font-size: 10px; color: var(--orange-dark); }
+    .badge-1 span { font-size: 20px; }
+    @keyframes spin-badge { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .badge-1 p { animation: spin-badge 12s linear infinite reverse; font-size: 9px; text-align: center; line-height: 1.2; letter-spacing: .03em; }
+
+    .fruit {
+      position: absolute; font-size: 28px;
+      animation: fruit-float 4s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.15));
+    }
+    .fruit-1 { top: 12%; left: 5%; animation-delay: 0s; }
+    .fruit-2 { top: 55%; left: -2%; animation-delay: 1.2s; }
+    .fruit-3 { bottom: 10%; right: 8%; animation-delay: 0.6s; }
+    .fruit-4 { top: 20%; right: 18%; animation-delay: 1.8s; font-size: 22px; }
+    @keyframes fruit-float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%       { transform: translateY(-14px) rotate(10deg); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+    }
+    .section-label::before, .section-label::after { content: '—'; opacity: .5; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.2; margin-bottom: 14px; }
+    .section-desc { font-size: 15px; line-height: 1.9; color: var(--text-mid); max-width: 560px; }
+    .section-head { margin-bottom: 60px; }
+    .section-head.centered { text-align: center; }
+    .section-head.centered .section-desc { margin: 0 auto; }
+
+    /* ─── FEATURES ─── */
+    #features { background: var(--cream); position: relative; overflow: hidden; }
+    #features::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E8773A' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='28'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; position: relative; }
+
+    .feature-card {
+      background: #fff; border-radius: var(--radius-lg);
+      padding: 44px 36px; text-align: center;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(232,119,58,.08);
+      transition: transform .3s, box-shadow .3s; position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--red-soft));
+      transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+    }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-icon {
+      width: 80px; height: 80px; margin: 0 auto 24px; border-radius: 50%;
+      background: linear-gradient(135deg, #FEE8D0, #FDDBB4);
+      display: flex; align-items: center; justify-content: center; font-size: 36px;
+      box-shadow: 0 4px 16px rgba(232,119,58,.2); transition: transform .3s;
+    }
+    .feature-card:hover .feature-icon { transform: scale(1.12) rotate(5deg); }
+    .feature-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .feature-en { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--orange); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+    .feature-desc { font-size: 13.5px; line-height: 1.85; color: var(--text-light); }
+
+    /* ─── PRODUCTS ─── */
+    #products { background: var(--warm-white); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
+
+    .product-card {
+      background: #fff; border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(232,119,58,.1);
+      transition: transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .35s; cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-10px) scale(1.01); box-shadow: var(--shadow-lg); }
+
+    .product-img { height: 200px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .product-img .emoji { font-size: 80px; transition: transform .4s; z-index: 1; position: relative; }
+    .product-card:hover .product-img .emoji { transform: scale(1.18) translateY(-6px); }
+
+    .card-strawberry   .product-img { background: linear-gradient(160deg, #FFE4E4, #FFBDBD); }
+    .card-blueberry    .product-img { background: linear-gradient(160deg, #E8E0FF, #C5B8F5); }
+    .card-passionfruit .product-img { background: linear-gradient(160deg, #FFF3D0, #FFD97D); }
+    .card-mango        .product-img { background: linear-gradient(160deg, #FFECD4, #FFB266); }
+    .card-apple        .product-img { background: linear-gradient(160deg, #E8F5E1, #B8E0A0); }
+    .card-rose         .product-img { background: linear-gradient(160deg, #FFE8F0, #FFADC8); }
+
+    .product-body { padding: 22px 24px 26px; }
+    .product-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 10px; }
+
+    .card-strawberry   .product-tag { background: #FFE4E4; color: #C0392B; }
+    .card-blueberry    .product-tag { background: #E8E0FF; color: #6B3FA0; }
+    .card-passionfruit .product-tag { background: #FFF3D0; color: #B07B00; }
+    .card-mango        .product-tag { background: #FFECD4; color: #C45B1E; }
+    .card-apple        .product-tag { background: #E8F5E1; color: #3A7A20; }
+    .card-rose         .product-tag { background: #FFE8F0; color: #A0304D; }
+
+    .product-name { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .product-name-en { font-family: 'Playfair Display', serif; font-size: 12px; color: var(--text-light); font-style: italic; margin-bottom: 10px; }
+    .product-desc { font-size: 13px; line-height: 1.75; color: var(--text-light); margin-bottom: 18px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 20px; font-weight: 900; color: var(--orange-dark); }
+    .product-price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
+    .btn-add {
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      color: #fff; border: none; border-radius: 20px;
+      padding: 8px 18px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 3px 12px rgba(232,119,58,.35);
+    }
+    .btn-add:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(232,119,58,.5); }
+
+    /* ─── STORY ─── */
+    #story { background: linear-gradient(160deg, #3D2314 0%, #6B3A22 100%); color: #fff; position: relative; overflow: hidden; }
+    #story::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(232,119,58,.08) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 20%, rgba(192,57,43,.06) 0%, transparent 50%);
+    }
+
+    .story-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1100px; margin: 0 auto; position: relative; }
+    .story-label { color: var(--orange-light); }
+    .story-label::before, .story-label::after { content: '—'; color: rgba(244,162,97,.5); }
+    .story-title { color: #fff; }
+    .story-title .gold { color: var(--orange-light); }
+    .story-text { font-size: 15px; line-height: 2; color: rgba(255,255,255,.78); margin-top: 20px; }
+    .story-sign { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+    .sign-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--orange-light), var(--orange-dark)); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .sign-name { font-size: 15px; font-weight: 700; color: #fff; }
+    .sign-role { font-size: 12px; color: rgba(255,255,255,.5); }
+
+    .story-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .story-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      padding: 28px 20px; text-align: center; backdrop-filter: blur(10px);
+      transition: transform .3s, background .3s;
+    }
+    .story-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.12); }
+    .story-card .sc-icon { font-size: 36px; margin-bottom: 10px; }
+    .story-card .sc-num { font-size: 28px; font-weight: 900; color: var(--orange-light); line-height: 1; }
+    .story-card .sc-label { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 4px; }
+    .story-card.featured { grid-column: span 2; background: linear-gradient(135deg, rgba(232,119,58,.25), rgba(192,57,43,.15)); border-color: rgba(244,162,97,.3); }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--cream); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+
+    .review-card {
+      background: #fff; border-radius: var(--radius-lg);
+      padding: 34px 30px; box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(232,119,58,.08);
+      position: relative; transition: transform .3s, box-shadow .3s;
+    }
+    .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .review-quote { position: absolute; top: 20px; right: 24px; font-family: 'Playfair Display', serif; font-size: 72px; color: rgba(232,119,58,.1); line-height: 1; }
+    .stars { color: #F4A261; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text { font-size: 14px; line-height: 1.9; color: var(--text-mid); margin-bottom: 24px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .reviewer-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .reviewer-meta { font-size: 12px; color: var(--text-light); }
+    .reviewer-product { font-size: 11px; color: var(--orange); font-weight: 600; margin-top: 2px; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--text-dark); color: rgba(255,255,255,.7); padding: 60px 5% 30px; }
+    .footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 48px; max-width: 1100px; margin: 0 auto 48px; }
+    .footer-brand .brand-name { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    .footer-brand .brand-en { font-family: 'Playfair Display', serif; font-size: 12px; font-style: italic; color: var(--orange-light); letter-spacing: .1em; margin-bottom: 14px; }
+    .footer-brand p { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,.55); }
+    .footer-col h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 18px; letter-spacing: .05em; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--orange-light); }
+    .footer-contact p { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 8px; display: flex; gap: 8px; align-items: flex-start; }
+    .footer-contact span { flex-shrink: 0; }
+    .social-links { display: flex; gap: 10px; margin-top: 16px; }
+    .social-link { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s; }
+    .social-link:hover { background: var(--orange); transform: translateY(-3px); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.35); flex-wrap: wrap; gap: 8px; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+    .reveal-delay-6 { transition-delay: .6s; }
+
+    /* ─── TOAST ─── */
+    #toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: var(--text-dark); color: #fff; padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transform: translateY(20px); transition: opacity .35s, transform .35s; }
+    #toast.show { opacity: 1; pointer-events: auto; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .hero-btns { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { display: none; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 680px) {
+      #navbar { padding: 0 4%; }
+      .nav-menu { display: none; position: fixed; inset: 72px 0 0 0; background: rgba(253,246,238,.97); backdrop-filter: blur(12px); flex-direction: column; padding: 24px; gap: 4px; overflow-y: auto; }
+      .nav-menu.open { display: flex; }
+      .nav-menu a { border-radius: var(--radius); padding: 14px 18px; font-size: 16px; }
+      .hamburger { display: flex; }
+      section { padding: 60px 5%; }
+      .features-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .story-visual { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════ NAVBAR ══════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🍓</div>
+    <div class="nav-logo-text">
+      <div class="cn">甜蜜農場</div>
+      <div class="en">Sweet Farm</div>
+    </div>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#hero">首頁</a></li>
+    <li><a href="#products">產品</a></li>
+    <li><a href="#story">品牌故事</a></li>
+    <li><a href="#reviews">顧客評價</a></li>
+    <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ══════ HERO ══════ -->
+<section id="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="hero-blob blob-3"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">100% 純天然手工果醬</div>
+      <h1 class="hero-title">
+        來自土地的<br><span class="accent">純粹甜蜜</span>
+      </h1>
+      <p class="hero-en">"From the Farm, Made with Love."</p>
+      <p class="hero-desc">
+        每一罐果醬，都是我們精心挑選的當季鮮果，以最傳統的慢火熬製工藝，
+        鎖住水果最自然的甜香。無添加防腐劑，只留下最真實的農場滋味。
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">🛍️ 立即選購</a>
+        <a href="#story" class="btn-secondary">📖 品牌故事</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">6+</div><div class="stat-label">口味種類</div></div>
+        <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">幸福顧客</div></div>
+        <div class="stat"><div class="stat-num">0</div><div class="stat-label">防腐添加</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="fruit fruit-1">🍓</div>
+      <div class="fruit fruit-2">🫐</div>
+      <div class="fruit fruit-3">🥭</div>
+      <div class="fruit fruit-4">🍎</div>
+      <div class="jar-wrap">
+        <svg class="jar-svg" viewBox="0 0 280 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="18" width="160" height="32" rx="8" fill="#8B4513"/>
+          <rect x="70" y="12" width="140" height="20" rx="6" fill="#A0522D"/>
+          <rect x="80" y="16" width="120" height="5" rx="2.5" fill="rgba(255,255,255,.18)"/>
+          <path d="M54 50 C54 46 58 44 62 44 L218 44 C222 44 226 46 226 50 L238 280 C240 296 228 310 212 310 L68 310 C52 310 40 296 42 280 Z" fill="#FFF8E7" stroke="#E8D5A0" stroke-width="2"/>
+          <path d="M58 130 C58 126 62 124 66 124 L214 124 C218 124 222 126 222 130 L234 280 C236 295 225 308 210 308 L70 308 C55 308 44 295 46 280 Z" fill="#E8453C"/>
+          <ellipse cx="140" cy="128" rx="78" ry="14" fill="#F06060"/>
+          <ellipse cx="140" cy="128" rx="54" ry="9" fill="#F47C7C"/>
+          <ellipse cx="140" cy="128" rx="30" ry="5" fill="#F8A0A0"/>
+          <ellipse cx="110" cy="200" rx="12" ry="8" fill="#C03030" opacity=".7"/>
+          <ellipse cx="160" cy="240" rx="10" ry="7" fill="#C03030" opacity=".6"/>
+          <ellipse cx="135" cy="270" rx="8" ry="6" fill="#C03030" opacity=".65"/>
+          <ellipse cx="175" cy="195" rx="7" ry="5" fill="#C03030" opacity=".5"/>
+          <path d="M72 60 Q80 200 76 300" stroke="rgba(255,255,255,.5)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M88 56 Q94 160 91 280" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
+          <rect x="72" y="130" width="136" height="90" rx="8" fill="rgba(255,255,255,.9)" stroke="rgba(232,119,58,.3)" stroke-width="1.5"/>
+          <text x="140" y="162" text-anchor="middle" font-family="serif" font-size="14" font-weight="bold" fill="#3D2314">甜蜜農場</text>
+          <text x="140" y="178" text-anchor="middle" font-family="serif" font-size="9" fill="#9C6B4E" font-style="italic">Sweet Farm</text>
+          <line x1="88" y1="185" x2="192" y2="185" stroke="rgba(232,119,58,.3)" stroke-width="1"/>
+          <text x="140" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#C0392B">草莓果醬</text>
+          <text x="140" y="213" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#9C6B4E">Strawberry Jam · 250g</text>
+          <ellipse cx="140" cy="308" rx="72" ry="8" fill="#D4C080" opacity=".4"/>
+        </svg>
+        <div class="badge badge-1">
+          <span>🏅</span>
+          <p>精選<br>好評</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ FEATURES ══════ -->
+<section id="features">
+  <div class="section-head centered">
+    <div class="section-label">我們的堅持</div>
+    <h2 class="section-title">三大品牌承諾</h2>
+    <p class="section-desc">每一罐甜蜜農場果醬，都承載著我們對品質與自然的執著。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-en">All Natural</div>
+      <div class="feature-title">純天然食材</div>
+      <p class="feature-desc">嚴選台灣在地當季鮮果，與友善耕作農場直接合作。從採收到入瓶，全程冷鏈管理，保留食材最鮮活的狀態，讓您吃到最純粹的自然滋味。</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-icon">🫕</div>
+      <div class="feature-en">Handcrafted</div>
+      <div class="feature-title">手工慢火熬製</div>
+      <p class="feature-desc">秉承傳統熬製工藝，以小火慢熬超過四小時，讓果肉的天然果膠充分釋放。每一批次限量生產，職人師傅全程監控，確保口感與風味的完美一致。</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-4">
+      <div class="feature-icon">✨</div>
+      <div class="feature-en">No Preservatives</div>
+      <div class="feature-title">無添加防腐劑</div>
+      <p class="feature-desc">堅持不添加任何人工防腐劑、色素與香精。以天然果膠與適量糖分達到自然保存效果，讓您與家人安心享用每一口最健康的手工果醬。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ PRODUCTS ══════ -->
+<section id="products">
+  <div class="section-head centered">
+    <div class="section-label">熱門商品</div>
+    <h2 class="section-title">精選果醬系列</h2>
+    <p class="section-desc">六種獨特風味，每一罐都是大自然最甜美的禮物。</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card card-strawberry reveal">
+      <div class="product-img"><span class="emoji">🍓</span></div>
+      <div class="product-body">
+        <div class="product-tag">經典人氣</div>
+        <div class="product-name">草莓果醬</div>
+        <div class="product-name-en">Strawberry Jam</div>
+        <p class="product-desc">採用苗栗大湖新鮮草莓，酸甜平衡恰到好處，果肉顆粒感十足，塗抹在鬆軟吐司上，幸福滋味立刻湧上心頭。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$280 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('草莓果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card card-blueberry reveal reveal-delay-1">
+      <div class="product-img"><span class="emoji">🫐</span></div>
+      <div class="product-body">
+        <div class="product-tag">抗氣化</div>
+        <div class="product-name">藍莓果醬</div>
+        <div class="product-name-en">Blueberry Jam</div>
+        <p class="product-desc">精選北美有機藍莓，富含花青素，深紫色澤誘人，濃郁果香中帶有微妙的單寧回甘，是追求健康生活者的首選。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$320 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('藍莓果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card card-passionfruit reveal reveal-delay-2">
+      <div class="product-img"><span class="emoji">🌟</span></div>
+      <div class="product-body">
+        <div class="product-tag">南洋風情</div>
+        <div class="product-name">百香果果醬</div>
+        <div class="product-name-en">Passion Fruit Jam</div>
+        <p class="product-desc">台東有機百香果的濃郁香氣，酸甜比例完美調配，鮮豔金黃色澤引人食慾。搭配優格或冰淇淋，異國風情隨即展開。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$300 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('百香果果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card card-mango reveal reveal-delay-3">
+      <div class="product-img"><span class="emoji">🥭</span></div>
+      <div class="product-body">
+        <div class="product-tag">季節限定</div>
+        <div class="product-name">芒果果醬</div>
+        <div class="product-name-en">Mango Jam</div>
+        <p class="product-desc">嚴選台南玉井愛文芒果，每年夏季限量製作。濃郁熱帶果香，質地細滑，金黃色澤如陽光般溫暖，是夏日最美好的禮物。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$350 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('芒果果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card card-apple reveal reveal-delay-4">
+      <div class="product-img"><span class="emoji">🍎</span></div>
+      <div class="product-body">
+        <div class="product-tag">暖心秋冬</div>
+        <div class="product-name">蘋果肉桂果醬</div>
+        <div class="product-name-en">Apple Cinnamon Jam</div>
+        <p class="product-desc">脆甜蘋果與錫蘭肉桂的完美邂逅，溫暖辛香與果甜相互交融。搭配鬆餅或司康享用，宛如秋日午後的溫柔擁抱。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$290 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('蘋果肉桂果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card card-rose reveal reveal-delay-5">
+      <div class="product-img"><span class="emoji">🌹</span></div>
+      <div class="product-body">
+        <div class="product-tag">典藏精品</div>
+        <div class="product-name">玫瑰荔枝果醬</div>
+        <div class="product-name-en">Rose Lychee Jam</div>
+        <p class="product-desc">台南玉荷包荔枝融合保加利亞玫瑰花瓣精萃，淡雅花香與荔枝甜蜜完美共舞。粉紅色澤浪漫迷人，是送禮自用的極致選擇。</p>
+        <div class="product-footer">
+          <div class="product-price">NT$380 <span>/ 250g</span></div>
+          <button class="btn-add" onclick="addToCart('玫瑰荔枝果醬')">加入購物車</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════ STORY ══════ -->
+<section id="story">
+  <div class="story-inner">
+    <div>
+      <div class="section-label story-label">Our Story</div>
+      <h2 class="section-title story-title">從<span class="gold">一罐果醬</span><br>開始的夢想</h2>
+      <p class="story-text">二〇一四年，林媽媽在苗栗的小農場裡，用祖母傳下的老鍋，熬出了第一批草莓果醬。那滋味，讓整個社區的鄰居爭相品嚐。</p>
+      <p class="story-text">十年後，「甜蜜農場」從那個小廚房走向全台灣，但我們始終堅守著那個初心——用最真實的食材，做最誠懇的果醬。我們與超過三十位在地農友合作，每一顆果實背後，都是一個用心耕耘土地的故事。</p>
+      <p class="story-text">我們相信，真正的好滋味，不需要任何添加劑來偽裝。甜蜜農場，讓每一個早晨都從最純粹的幸福開始。</p>
+      <div class="story-sign">
+        <div class="sign-avatar">👩‍🌾</div>
+        <div>
+          <div class="sign-name">林月美</div>
+          <div class="sign-role">甜蜜農場 創辦人 &amp; 首席果醬師</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-visual">
+      <div class="story-card reveal">
+        <div class="sc-icon">🌾</div>
+        <div class="sc-num">30+</div>
+        <div class="sc-label">合作農場</div>
+      </div>
+      <div class="story-card reveal reveal-delay-1">
+        <div class="sc-icon">📅</div>
+        <div class="sc-num">10</div>
+        <div class="sc-label">年品質堅持</div>
+      </div>
+      <div class="story-card reveal reveal-delay-2">
+        <div class="sc-icon">🏆</div>
+        <div class="sc-num">15</div>
+        <div class="sc-label">國際食品獎項</div>
+      </div>
+      <div class="story-card reveal reveal-delay-3">
+        <div class="sc-icon">💝</div>
+        <div class="sc-num">10K+</div>
+        <div class="sc-label">幸福家庭</div>
+      </div>
+      <div class="story-card featured reveal reveal-delay-4">
+        <div class="sc-icon">🎖️</div>
+        <div class="sc-num" style="font-size:18px;margin-bottom:6px;">2023 年度最佳手工果醬品牌</div>
+        <div class="sc-label">台灣食品金獎 × 農委會優良農產品標章</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ REVIEWS ══════ -->
+<section id="reviews">
+  <div class="section-head centered">
+    <div class="section-label">顧客心聲</div>
+    <h2 class="section-title">他們說的話</h2>
+    <p class="section-desc">來自全台各地顧客的真實評價，是我們最大的動力。</p>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="review-text">玫瑰荔枝果醬讓我驚豔了！從來沒想到果醬可以這麼細緻，花香和果甜的比例剛剛好，完全不甜膩。現在每天早晨塗抹在可頌上，是我最期待的小確幸，已經囤了三罐備用！</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#FFE8F0,#FFADC8);">🌸</div>
+        <div>
+          <div class="reviewer-name">陳小雯</div>
+          <div class="reviewer-meta">台北市 ✦ 上班族</div>
+          <div class="reviewer-product">購買：玫瑰荔枝果醬</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="review-text">身為兩個孩子的媽媽，最在意的就是食品安全。甜蜜農場無添加的承諾讓我非常放心，孩子們超愛草莓口味！每次打開罐子，滿滿的果香撲鼻而來，完全是記憶中外婆手作的那個味道。</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#FFE4E4,#FFBDBD);">🍓</div>
+        <div>
+          <div class="reviewer-name">王麗華</div>
+          <div class="reviewer-meta">台中市 ✦ 全職媽媽</div>
+          <div class="reviewer-product">購買：草莓果醬 × 3罐</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal reveal-delay-4">
+      <div class="review-quote">"”</div>
+      <div class="stars">★★★★★</div>
+      <p class="review-text">身為主廚，對食材品質要求極高。甜蜜農場的百香果醬成了我餐廳甜點的秘密武器——用來搭配慕斯和冰淇淋，顧客每次都問我果醬哪裡買的。真材實料、風味層次豐富，強力推薦！</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background: linear-gradient(135deg,#FFF3D0,#FFD97D);">👨‍🍳</div>
+        <div>
+          <div class="reviewer-name">李建廷</div>
+          <div class="reviewer-meta">高雄市 ✦ 餐廳主廚</div>
+          <div class="reviewer-product">購買：百香果果醬（批發）</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════ FOOTER ══════ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">🍓 甜蜜農場</div>
+      <div class="brand-en">Sweet Farm Artisan Jam</div>
+      <p>用最真實的食材，做最誠懇的果醬。<br>每一罐都承載著對土地與生活的熱愛。</p>
+      <div class="social-links">
+        <a class="social-link" href="#" title="Facebook">📘</a>
+        <a class="social-link" href="#" title="Instagram">📷</a>
+        <a class="social-link" href="#" title="LINE">💬</a>
+        <a class="social-link" href="#" title="YouTube">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速導覽</h4>
+      <ul>
+        <li><a href="#hero">首頁</a></li>
+        <li><a href="#features">品牌特色</a></li>
+        <li><a href="#products">全部產品</a></li>
+        <li><a href="#story">品牌故事</a></li>
+        <li><a href="#reviews">顧客評價</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>服務資訊</h4>
+      <ul>
+        <li><a href="#">訂購說明</a></li>
+        <li><a href="#">配送政策</a></li>
+        <li><a href="#">退換貨規定</a></li>
+        <li><a href="#">常見問題</a></li>
+        <li><a href="#">企業採購</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>聯絡我們</h4>
+      <p><span>📍</span>苗栗縣大湖鄉農場路 168 號</p>
+      <p><span>📞</span>037-681-888</p>
+      <p><span>✉️</span>hello@sweetfarm.com.tw</p>
+      <p><span>🕐</span>週一至週五 09:00–17:30</p>
+      <p><span>🚚</span>滿 NT$500 免運費</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 甜蜜農場 Sweet Farm. All rights reserved.</span>
+    <span>🌿 用愛熬製 · 無添加 · 台灣製造</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-menu a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Toast
+  const toast = document.getElementById('toast');
+  let timer;
+  function addToCart(name) {
+    clearTimeout(timer);
+    toast.textContent = '🛍️ 已將「' + name + '」加入購物車！';
+    toast.classList.add('show');
+    timer = setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      const active = a.getAttribute('href') === '#' + current;
+      a.style.background = active ? 'rgba(232,119,58,.12)' : '';
+      a.style.color = active ? 'var(--orange-dark)' : '';
+    });
+  });
+</script>
+</body>
+</html>
