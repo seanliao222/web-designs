@@ -951,7 +951,109 @@
             .step { flex-direction: column; gap: 1rem; }
             .step:not(:last-child)::after { display: none; }
         }
-    </style>
+    
+        /* Lovable expanded card */
+        .lovable-card {
+            border-color: rgba(124, 58, 237, 0.45);
+            background: linear-gradient(135deg, rgba(124,58,237,0.09) 0%, rgba(236,72,153,0.06) 100%), var(--card-bg);
+            grid-column: span 2;
+        }
+        @media (max-width: 700px) { .lovable-card { grid-column: span 1; } }
+        .tool-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.22rem 0.6rem;
+            border-radius: 20px;
+        }
+        .tool-section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--purple-light);
+            margin: 1.2rem 0 0.55rem;
+            padding-bottom: 0.28rem;
+            border-bottom: 1px solid rgba(124,58,237,0.2);
+        }
+        .tool-tech-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+        }
+        @media (max-width: 640px) { .tool-tech-features { grid-template-columns: 1fr; } }
+        .tech-feature {
+            background: rgba(124,58,237,0.07);
+            border: 1px solid rgba(124,58,237,0.15);
+            border-radius: 10px;
+            padding: 0.65rem 0.85rem;
+        }
+        .tf-title {
+            font-size: 0.77rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            margin-bottom: 0.28rem;
+        }
+        .tf-desc {
+            font-size: 0.77rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+        .tf-desc code {
+            background: rgba(124,58,237,0.15);
+            color: var(--purple-light);
+            padding: 0.05em 0.32em;
+            border-radius: 4px;
+            font-size: 0.84em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .tool-breakdown {
+            background: rgba(236,72,153,0.07);
+            border: 1px solid rgba(236,72,153,0.2);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            font-size: 0.81rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .tool-vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.55rem;
+            margin-bottom: 0.6rem;
+        }
+        @media (max-width: 640px) { .tool-vs-grid { grid-template-columns: 1fr; } }
+        .tool-vs-item {
+            background: rgba(6,182,212,0.05);
+            border: 1px solid rgba(6,182,212,0.15);
+            border-radius: 10px;
+            padding: 0.55rem 0.75rem;
+        }
+        .vs-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--cyan);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.22rem;
+        }
+        .vs-desc {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .tag-fullstack {
+            background: rgba(124,58,237,0.18);
+            color: var(--purple-light);
+            border: 1px solid rgba(124,58,237,0.3);
+        }
+</style>
 </head>
 <body>
     <div id="particles"></div>
@@ -1314,7 +1416,61 @@
                 </div>
             </div>
 
-            <div class="tool-card reveal">
+            
+            <div class="tool-card reveal lovable-card">
+                <span class="tool-badge">深度解析</span>
+                <span class="tool-icon">💜</span>
+                <div class="tool-name">Lovable</div>
+                <div class="tool-en">lovable.dev</div>
+                <p class="tool-desc">全棧 AI 產品建構器。一個 prompt 可同時生成 React 元件、Supabase schema、Row Level Security 政策、Edge Functions 與部署設定——從 0 到 MVP 最快的工具之一。</p>
+
+                <div class="tool-section-label">🔬 技術核心差異</div>
+                <div class="tool-tech-features">
+                    <div class="tech-feature">
+                        <div class="tf-title">☁️ 沙盒執行環境</div>
+                        <div class="tf-desc">每次修改都在雲端沙盒自動執行，無需手動 <code>npm install</code> 或 <code>node server.js</code>。寫→執行→報錯→修復的迴圈全自動且對用戶不可見——對比 Cursor 你仍需管理本地終端機。</div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tf-title">⚡ 單 Prompt 全棧生成</div>
+                        <div class="tf-desc">一個 prompt 可同時生成 React 元件、Supabase table、RLS 政策、Edge Functions 與部署設定。一般的 AI 助手或 Cursor 需要你跨層手動協調這些工作。</div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tf-title">🐙 GitHub 整合作為所有權層</div>
+                        <div class="tf-desc">每次變更都走真實 GitHub PR。你擁有程式碼，可以 clone 到本機，也可以中途切換到 Cursor 繼續開發。這解決了 Bolt.new 的 lock-in 問題。</div>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tf-title">🗄️ 自然語言 → 資料庫 Schema</div>
+                        <div class="tf-desc">輸入「加入角色型存取控制的使用者驗證」，Lovable 直接翻譯成 Supabase schema migrations + RLS policies。這是比向 Cursor 下 prompt 更高層次的抽象。</div>
+                    </div>
+                </div>
+
+                <div class="tool-section-label">⚠️ 天花板在哪裡</div>
+                <div class="tool-breakdown">複雜商業邏輯、客製化 UI 互動、效能優化，以及任何需要深度 debug 可見性的任務，都會碰到 Lovable 的上限。沙盒模型意味著你無法附加 debugger 或分析效能 profile。</div>
+
+                <div class="tool-section-label">📍 定位比較</div>
+                <div class="tool-vs-grid">
+                    <div class="tool-vs-item">
+                        <span class="vs-label">vs Cursor</span>
+                        <span class="vs-desc">Lovable = 產品建構器；Cursor = 工程師工具。用 Lovable 在數小時內從 0→MVP，再視需要交棒給 Cursor 做深度客製。</span>
+                    </div>
+                    <div class="tool-vs-item">
+                        <span class="vs-label">vs Bolt.new</span>
+                        <span class="vs-desc">Lovable 有持久專案、GitHub sync、Supabase 原生整合；Bolt.new 更適合快速拋棄式原型。</span>
+                    </div>
+                    <div class="tool-vs-item">
+                        <span class="vs-label">vs v0</span>
+                        <span class="vs-desc">v0 只生成 UI（React 元件）；Lovable 是全棧，含後端資料庫與 API。</span>
+                    </div>
+                </div>
+
+                <div class="tool-tags">
+                    <span class="tag tag-free">有免費版</span>
+                    <span class="tag tag-browser">瀏覽器使用</span>
+                    <span class="tag tag-fullstack">全棧生成</span>
+                </div>
+            </div>
+
+<div class="tool-card reveal">
                 <span class="tool-icon">💬</span>
                 <div class="tool-name">ChatGPT</div>
                 <div class="tool-en">chat.openai.com · OpenAI</div>
