@@ -371,128 +371,81 @@
             font-size: 0.8rem;
             line-height: 1.8;
         }
-        .file-tree-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 0;
+        .context-panel-body .file {
+            color: var(--purple-light);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .context-panel-body .snippet {
             color: var(--text-dim);
-            font-size: 0.82rem;
+            padding-left: 1rem;
         }
-        .file-tree-item.active { color: var(--cyan); }
-        .file-tree-item.highlighted { color: var(--purple-light); }
-        .file-indent { padding-left: 1.2rem; }
-        .context-note {
-            margin-top: 1.5rem;
-            background: rgba(6,182,212,0.08);
-            border: 1px solid rgba(6,182,212,0.2);
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            font-size: 0.88rem;
-            color: var(--text);
-            line-height: 1.7;
+        .context-panel-body .match {
+            color: var(--green);
+            background: rgba(16,185,129,0.08);
         }
-        .context-note strong { color: var(--cyan); }
+        .ctx-arrow {
+            text-align: center;
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: var(--purple-light);
+        }
 
-        /* ─── FEEDBACK LOOP ─── */
-        #loop {
-            background: var(--dark);
-        }
-        .loop-diagram {
-            max-width: 860px;
+        /* ─── LOOP ─── */
+        #loop { background: linear-gradient(180deg, var(--dark-2) 0%, var(--dark) 100%); }
+        .loop-steps {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
-        .loop-steps {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0;
-            align-items: center;
+        .loop-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: calc(10% + 14px);
+            right: calc(10% + 14px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple), var(--pink));
         }
         .loop-step {
-            text-align: center;
-            padding: 0 0.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
         }
-        .loop-icon {
-            width: 60px;
-            height: 60px;
+        .loop-dot {
+            width: 28px; height: 28px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 0.8rem;
-            border: 2px solid;
-        }
-        .loop-icon.write   { background: rgba(124,58,237,0.15); border-color: var(--purple); }
-        .loop-icon.run     { background: rgba(6,182,212,0.15);  border-color: var(--cyan); }
-        .loop-icon.error   { background: rgba(239,68,68,0.12);  border-color: var(--red); }
-        .loop-icon.fix     { background: rgba(16,185,129,0.12); border-color: var(--green); }
-        .loop-icon.ship    { background: rgba(245,158,11,0.12); border-color: var(--yellow); }
-        .loop-label {
-            font-family: var(--mono);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .loop-label.write  { color: var(--purple-light); }
-        .loop-label.run    { color: var(--cyan); }
-        .loop-label.error  { color: var(--red); }
-        .loop-label.fix    { color: var(--green); }
-        .loop-label.ship   { color: var(--yellow); }
-        .loop-sub {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            margin-top: 4px;
-            line-height: 1.5;
-        }
-        .loop-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(124,58,237,0.4);
-            font-size: 1.4rem;
-            margin-bottom: 2.8rem;
-        }
-        .loop-detail {
-            margin-top: 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .loop-detail-card {
-            background: var(--dark-3);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 1.2rem;
-        }
-        .loop-detail-card h4 {
-            font-size: 0.88rem;
             font-weight: 700;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-size: 0.75rem;
+            color: #fff;
+            z-index: 1;
         }
-        .loop-detail-card p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-        .loop-code {
+        .loop-label { font-size: 0.82rem; text-align: center; color: var(--text-dim); max-width: 90px; nd: rgba(16,185,129,0.12); border-color: var(--green); }
+        .loop-code .warn  { background: rgba(245,158,11,0.1);  border-color: var(--yellow); }
+        .loop-code .fail  { background: rgba(239,68,68,0.1);   border-color: var(--red); }
+        .loop-code pre {
             font-family: var(--mono);
-            font-size: 0.78rem;
-            background: var(--dark-4);
-            border-radius: 8px;
-            padding: 0.8rem;
-            margin-top: 0.6rem;
-            color: var(--text-dim);
-            line-height: 1.7;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            color: var(--text);
         }
-        .loop-code .err { color: #e06c75; }
-        .loop-code .ok  { color: #98c379; }
-        .loop-code .dim { color: rgba(148,163,184,0.4); }
+        .loop-code .kw  { color: #c678dd; }
+        .loop-code .str { color: #98c379; }
+        .loop-code .fn  { color: #61afef; }
+        .loop-code .num { color: #d19a66; }
+        .loop-code .cmt { color: #5c6370; }
+        .loop-code .ai  { color: var(--purple-light); font-weight: 600; }
 
         /* ─── TOOLS ─── */
         #tools {
@@ -500,49 +453,90 @@
         }
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
         }
         .tool-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 1.8rem;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             position: relative;
             overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .tool-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, transparent 60%);
-            pointer-events: none;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--pink));
         }
-        .tool-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(124,58,237,0.15);
-            border-color: var(--purple-light);
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(124,58,237,0.15); }
+        .tool-tier {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .tool-icon { font-size: 2.4rem; margin-bottom: 0.9rem; display: block; }
-        .tool-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .tool-en {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.78rem;
-            color: var(--purple-light);
-            margin-bottom: 0.7rem;
+        .tool-tier.enterprise { color: var(--cyan); }
+        .tool-tier.pro        { color: var(--purple-light); }
+        .tool-tier.indie      { color: var(--yellow); }
+        .tool-tier.proto      { coht: 1.7;
         }
-        .tool-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1rem; }
-        .tool-tech {
+        .loop-code .err { color: #e06c75; }
+        .loop-code {
+            background: var(--dark-4);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.4rem;
+            margin-top: 2.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .loop-code .tab-line {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+        }
+        .loop-code .tab-label {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 80px;
+            padding-top: 2px;
+        }
+        .loop-code .tab-label.ai   { color: var(--purple-light); }
+        .loop-code .tab-label.user { color: var(--pink); }
+        .loop-code .tab-label.term { color: var(--cyan); }
+        .loop-code .tab-label.ok   { color: var(--green); }
+        .loop-code .tab-label.err  { color: var(--red); }
+        .loop-code .tab-label.warn { color: var(--yellow); }
+        .loop-code .tab-content { flex: 1; font-size: 0.83rem; color: var(--text); }
+        .loop-code .ok   { background: rgba(16,185,129,0.08);  border-color: var(--green); }
+        .loop-code .warn { background: rgba(245,158,11,0.08);   border-color: var(--yellow); }
+        .loop-code .fail { background: rgba(239,68,68,0.08);    border-color: var(--red); }
+        .loop-code pre {
             font-family: var(--mono);
-            font-size: 0.76rem;
-            color: var(--cyan);
-            background: rgba(6,182,212,0.08);
-            border: 1px solid rgba(6,182,212,0.15);
-            border-radius: 6px;
-            padding: 0.5rem 0.7rem;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            color: var(--text);
+        }
+        .loop-code .kw  { color: #c678dd; }
+        .loop-code .str { color: #98c379; }
+        .loop-code .fn  { color: #61afef; }
+        .loop-code .num { color: #d19a66; }
+        .loop-code .cmt { color: #5c6370; }
+        .loop-code .ai  { color: var(--purple-light); font-weight: 600; }
             margin-bottom: 0.8rem;
             line-height: 1.6;
         }
@@ -922,7 +916,288 @@
         }
         footer a { color: var(--purple-light); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
-    </style>
+    
+        /* ─── TOOL COMPARISON TABLE ─── */
+        #tool-comparison {
+            padding: 6rem 5% 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        .comparison-table-wrap {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            margin-top: 2.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 900px;
+        }
+        .comparison-table thead tr {
+            background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(236,72,153,0.2));
+        }
+        .comparison-table th {
+            padding: 1rem 0.9rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--purple-light);
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+        .comparison-table td {
+            padding: 0.8rem 0.9rem;
+            border-bottom: 1px solid rgba(124,58,237,0.1);
+            vertical-align: middle;
+            color: var(--text);
+        }
+        .comparison-table tbody tr {
+            background: var(--card-bg);
+            transition: background 0.2s;
+        }
+        .comparison-table tbody tr:hover {
+            background: rgba(124,58,237,0.15);
+        }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .tier-enterprise { background: rgba(6,182,212,0.15); color: #06b6d4; border: 1px solid rgba(6,182,212,0.3); }
+        .tier-pro        { background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); }
+        .tier-indie      { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .tier-proto      { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+        .check-yes  { color: #10b981; font-weight: 700; }
+        .check-no   { color: #ef4444; font-weight: 700; }
+        .check-part { color: #f59e0b; font-weight: 700; }
+        .tool-name { font-weight: 700; color: var(--purple-light); }
+
+        /* ─── SCENARIO CARDS ─── */
+        #scenario-recommend {
+            padding: 4rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .scenario-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.6rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--pink));
+        }
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(124,58,237,0.2);
+        }
+        .scenario-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .scenario-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            margin-bottom: 1rem;
+        }
+        .scenario-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .scenario-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .scenario-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .scenario-step-text { color: var(--text); line-height: 1.4; }
+        .scenario-step-tool { color: var(--pink); font-weight: 600; }
+
+        /* ─── TOOL TABS ─── */
+        #tool-tabs-section {
+            padding: 4rem 5% 6rem;
+            position: relative;
+            z-index: 1;
+        }
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0;
+        }
+        .tab-btn {
+            padding: 0.6rem 1.1rem;
+            border: 1px solid var(--card-border);
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            background: rgba(124,58,237,0.06);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Noto Sans TC', sans-serif;
+            position: relative;
+            bottom: -1px;
+        }
+        .tab-btn:hover { color: var(--purple-light); background: rgba(124,58,237,0.15); }
+        .tab-btn.active {
+            background: var(--dark-3);
+            color: var(--purple-light);
+            border-color: var(--card-border);
+            border-bottom-color: var(--dark-3);
+        }
+        .tab-content-wrap {
+            background: var(--dark-3);
+            border: 1px solid var(--card-border);
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+        }
+        .tab-panel {
+            display: none;
+            padding: 2rem;
+        }
+        .tab-panel.active { display: block; }
+        .tool-tab-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .tool-tab-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple-light), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tool-tab-tagline {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            margin-top: 0.3rem;
+        }
+        .verdict-badge {
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .verdict-enterprise { background: rgba(6,182,212,0.15); color: #06b6d4; border: 1px solid rgba(6,182,212,0.3); }
+        .verdict-pro        { background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.35); }
+        .verdict-indie      { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .verdict-proto      { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+        .tool-tab-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .tool-tab-body { grid-template-columns: 1fr; }
+            .tab-btn { font-size: 0.78rem; padding: 0.5rem 0.8rem; }
+        }
+        .tool-tab-box {
+            background: rgba(124,58,237,0.08);
+            border: 1px solid rgba(124,58,237,0.18);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+        }
+        .tool-tab-box h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--purple-light);
+            margin-bottom: 0.8rem;
+        }
+        .tool-tab-box ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .tool-tab-box ul li {
+            font-size: 0.875rem;
+            color: var(--text);
+            padding-left: 1rem;
+            position: relative;
+        }
+        .tool-tab-box ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--pink);
+        }
+        .tool-tab-pricing {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+        }
+        .tool-tab-pricing strong { color: var(--green); }
+        .tab-code-block {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(124,58,237,0.25);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: #a78bfa;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            grid-column: 1 / -1;
+            line-height: 1.7;
+        }
+        .tab-code-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--pink);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+</style>
 </head>
 <body>
     <!-- HEADER -->
@@ -2110,6 +2385,523 @@
         <p class="section-desc">Vibe Coding 是大腦的「指揮藝術」，而 AI Agent 是實現藝術的「全能義肢」。兩者不是競爭關係，而是協作層次不同——搞清楚這個，你才能同時駕馭兩種力量</p>
     </section>
 
+
+    <!-- TOOL COMPARISON TABLE -->
+    <section id="tool-comparison">
+        <span class="section-tag">工具全覽</span>
+        <h2 class="section-title">工具選擇比較表</h2>
+        <p class="section-desc">2025 年主流 AI 編碼工具一覽，找到最適合你工作情境的那一把刀</p>
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>工具名稱</th>
+                        <th>定位</th>
+                        <th>需要本地環境</th>
+                        <th>Codebase 感知</th>
+                        <th>多檔案協作</th>
+                        <th>最適合</th>
+                        <th>不適合</th>
+                        <th>免費方案</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tool-name">Cursor</td>
+                        <td><span class="tier-badge tier-pro">🟢 專業開發者</span></td>
+                        <td class="check-yes">✅</td>
+                        <td>完整索引</td>
+                        <td class="check-yes">✅</td>
+                        <td>複雜多檔案重構</td>
+                        <td>無本地環境場景</td>
+                        <td>有（2000次/月）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Windsurf</td>
+                        <td><span class="tier-badge tier-pro">🟢 專業開發者</span></td>
+                        <td class="check-yes">✅</td>
+                        <td>完整索引</td>
+                        <td class="check-yes">✅</td>
+                        <td>Flow感知的長上下文任務</td>
+                        <td>需要細粒度控制</td>
+                        <td>有（有限）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Kiro <small style="color:var(--text-dim)">(Amazon)</small></td>
+                        <td><span class="tier-badge tier-enterprise">🔵 企業級</span></td>
+                        <td class="check-yes">✅</td>
+                        <td>完整索引</td>
+                        <td class="check-yes">✅</td>
+                        <td>Spec驅動開發、企業合規</td>
+                        <td>個人快速原型</td>
+                        <td>有（Preview）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">GitHub Copilot</td>
+                        <td><span class="tier-badge tier-enterprise">🔵 企業級</span></td>
+                        <td class="check-yes">✅</td>
+                        <td>部分</td>
+                        <td class="check-part">⚡ 部分</td>
+                        <td>企業安全合規、現有IDE整合</td>
+                        <td>全棧生成</td>
+                        <td>有（30次/月）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Lovable</td>
+                        <td><span class="tier-badge tier-indie">🟡 獨立開發者</span></td>
+                        <td class="check-no">❌</td>
+                        <td>無</td>
+                        <td class="check-yes">✅（雲端）</td>
+                        <td>0→MVP、Supabase全棧</td>
+                        <td>效能調優、複雜邏輯</td>
+                        <td>有（有限）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Bolt.new</td>
+                        <td><span class="tier-badge tier-proto">🟠 快速原型</span></td>
+                        <td class="check-no">❌</td>
+                        <td>無</td>
+                        <td class="check-yes">✅（雲端）</td>
+                        <td>快速Demo、StackBlitz環境</td>
+                        <td>持久大型專案</td>
+                        <td>有（有限）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">v0 <small style="color:var(--text-dim)">(Vercel)</small></td>
+                        <td><span class="tier-badge tier-proto">🟠 快速原型</span></td>
+                        <td class="check-no">❌</td>
+                        <td>無</td>
+                        <td class="check-no">❌</td>
+                        <td>React UI生成、Shadcn組件</td>
+                        <td>後端邏輯</td>
+                        <td>有（有限）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Firebase Studio</td>
+                        <td><span class="tier-badge tier-indie">🟡 獨立開發者</span></td>
+                        <td class="check-no">❌</td>
+                        <td>無</td>
+                        <td class="check-yes">✅（雲端）</td>
+                        <td>Google生態、Firebase整合</td>
+                        <td>非Google技術棧</td>
+                        <td>有</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">Replit</td>
+                        <td><span class="tier-badge tier-proto">🟠 快速原型</span></td>
+                        <td class="check-no">❌</td>
+                        <td>部分</td>
+                        <td class="check-part">⚡ 部分</td>
+                        <td>學習、快速分享展示</td>
+                        <td>生產級部署</td>
+                        <td>有（有限）</td>
+                    </tr>
+                    <tr>
+                        <td class="tool-name">ChatGPT / Claude</td>
+                        <td><span class="tier-badge tier-proto">🟠 快速原型</span></td>
+                        <td class="check-no">❌</td>
+                        <td>無</td>
+                        <td class="check-no">❌</td>
+                        <td>概念驗證、單檔腳本</td>
+                        <td>多檔案專案</td>
+                        <td>有</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim);text-align:right;">
+            🔵 企業級 &nbsp;|&nbsp; 🟢 專業開發者 &nbsp;|&nbsp; 🟡 獨立開發者 &nbsp;|&nbsp; 🟠 快速原型
+        </p>
+    </section>
+
+    <!-- SCENARIO RECOMMEND -->
+    <section id="scenario-recommend">
+        <span class="section-tag">情境指南</span>
+        <h2 class="section-title">使用情境推薦</h2>
+        <p class="section-desc">根據你的實際需求，選對工具組合，事半功倍</p>
+        <div class="scenario-grid">
+            <div class="scenario-card">
+                <div class="scenario-icon">🚀</div>
+                <div class="scenario-title">一人 SaaS MVP</div>
+                <div class="scenario-flow">
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">1</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Lovable</span> — 0→MVP，自動搭前端＋Supabase 後端</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">2</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Cursor</span> — sync GitHub，精修邏輯與效能</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">3</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Firebase Studio</span> — 補強 Google 生態後端需求</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-icon">🏢</div>
+                <div class="scenario-title">企業開發團隊</div>
+                <div class="scenario-flow">
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">1</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">GitHub Copilot Enterprise</span> — 合規、審計、私有模型訓練</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">2</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Kiro</span> — Spec 驅動，確保需求→實作可追溯</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">3</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Cursor</span> — 個別開發者日常 IDE 加速</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-icon">🎨</div>
+                <div class="scenario-title">複雜前後端專案</div>
+                <div class="scenario-flow">
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">1</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Cursor</span> — 主力 IDE，全 codebase 感知</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">2</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Windsurf</span> — 長上下文重構任務切換</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">3</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">v0</span> — UI 組件快速出稿後貼回</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-icon">⚡</div>
+                <div class="scenario-title">快速原型給客戶看</div>
+                <div class="scenario-flow">
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">1</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Bolt.new 或 v0</span> — 5 分鐘出可互動 Demo</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">2</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">Lovable</span> — 客戶點頭後，加上真實後端</span>
+                    </div>
+                    <div class="scenario-step">
+                        <span class="scenario-step-num">3</span>
+                        <span class="scenario-step-text"><span class="scenario-step-tool">完成</span> — GitHub sync 移交或繼續迭代</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOL DETAIL TABS -->
+    <section id="tool-tabs-section">
+        <span class="section-tag">深度剖析</span>
+        <h2 class="section-title">每工具詳細解析</h2>
+        <p class="section-desc">核心機制、最佳 Prompt 範例、定價與 Verdict，一次搞定</p>
+
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab(event,'cursor')">Cursor</button>
+            <button class="tab-btn" onclick="switchTab(event,'windsurf')">Windsurf</button>
+            <button class="tab-btn" onclick="switchTab(event,'kiro')">Kiro</button>
+            <button class="tab-btn" onclick="switchTab(event,'copilot')">GitHub Copilot</button>
+            <button class="tab-btn" onclick="switchTab(event,'lovable')">Lovable</button>
+            <button class="tab-btn" onclick="switchTab(event,'bolt')">Bolt.new</button>
+            <button class="tab-btn" onclick="switchTab(event,'v0')">v0</button>
+            <button class="tab-btn" onclick="switchTab(event,'firebase')">Firebase Studio</button>
+        </div>
+        <div class="tab-content-wrap">
+
+            <!-- CURSOR -->
+            <div class="tab-panel active" id="tab-cursor">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Cursor</div>
+                        <div class="tool-tab-tagline">工程師的全能 IDE，把整個 codebase 當成 context</div>
+                    </div>
+                    <span class="verdict-badge verdict-pro">🟢 專業開發者首選</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>Codebase vector indexing — 每個檔案都 embedding，AI 能語意搜尋</li>
+                            <li>@-引用語法 — 精確讓 AI 看到特定檔案、函式、文件</li>
+                            <li>Composer 模式 — 跨多檔案同時修改，一次完成重構</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 2,000 次/月</div>
+                            <div>• <strong>Pro</strong> — $20/月，無限次數</div>
+                            <div>• <strong>Business</strong> — $40/月，團隊管理 + 資安</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>@src/api/auth.ts @types/user.ts 幫我在 auth middleware 加上 rate limiting，
+參考現有的 error handling 模式，不要引入新的 dependency</div>
+                </div>
+            </div>
+
+            <!-- WINDSURF -->
+            <div class="tab-panel" id="tab-windsurf">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Windsurf</div>
+                        <div class="tool-tab-tagline">強調「Flow」— AI 主動感知你的工作意圖，不只回應指令</div>
+                    </div>
+                    <span class="verdict-badge verdict-pro">🟢 大型既有 codebase 更順</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>Cascade 引擎 — 比 Cursor 更長的 context window，理解更多前因後果</li>
+                            <li>Flows 功能 — AI 主動建議下一步，而非被動等指令</li>
+                            <li>內建終端機執行 — 可直接在 IDE 內跑指令驗證結果</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 基本功能</div>
+                            <div>• <strong>Pro</strong> — $15/月</div>
+                            <div>• 企業方案尚在成長中</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>我正在重構 payment service，先幫我分析目前的依賴關係，
+再提出分拆方案，不要急著改 code
+
+（Windsurf 會主動讀相關檔案後提出計畫）</div>
+                </div>
+            </div>
+
+            <!-- KIRO -->
+            <div class="tab-panel" id="tab-kiro">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Kiro <small style="font-size:0.7em;color:var(--text-dim)">(Amazon)</small></div>
+                        <div class="tool-tab-tagline">Spec-driven development — 先寫規格，再讓 AI 實作</div>
+                    </div>
+                    <span class="verdict-badge verdict-enterprise">🔵 企業合規最佳選擇</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>Spec 文件驅動 — 你寫 SPEC.md，AI 嚴格按規格實作，可追溯</li>
+                            <li>Hooks 系統 — 事件觸發 AI 動作，如「存檔後自動跑測試」</li>
+                            <li>與 AWS 服務深度整合 — Lambda、DynamoDB、Cognito 一站搞定</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Preview 免費</strong>（2025）</div>
+                            <div>• 正式定價未公布</div>
+                            <div>• 預期與 AWS 帳單整合</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例 — 先建立 Spec</div>功能: 使用者認證系統
+需求:
+  - JWT + refresh token 機制
+  - 「記住我」30 天 session
+  - 登入失敗 5 次鎖帳號
+限制: 不用第三方 auth library（自行實作）
+測試: 每個需求都要有對應 unit test
+
+→ 然後讓 Kiro 按 spec 逐項實作並打勾</div>
+                </div>
+            </div>
+
+            <!-- COPILOT -->
+            <div class="tab-panel" id="tab-copilot">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">GitHub Copilot</div>
+                        <div class="tool-tab-tagline">嵌入你現有 IDE 的 AI 副駕，不改變工作流</div>
+                    </div>
+                    <span class="verdict-badge verdict-enterprise">🔵 企業採購最安全選項</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>只感知當前開啟的檔案（非全局索引），輕量但有限</li>
+                            <li>Chat 模式可問問題、解釋程式碼、生成測試</li>
+                            <li>Enterprise 版支援私有 codebase 微調，符合資安合規</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 30 次/月</div>
+                            <div>• <strong>Pro</strong> — $10/月</div>
+                            <div>• <strong>Enterprise</strong> — $19/人/月</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例 — IDE 內選取函式後</div>/explain   → 解釋這段程式碼的邏輯
+/fix       → 幫我找並修掉 bug
+/tests     → 生成對應的 unit tests
+/doc       → 補上 JSDoc / docstring</div>
+                </div>
+            </div>
+
+            <!-- LOVABLE -->
+            <div class="tab-panel" id="tab-lovable">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Lovable</div>
+                        <div class="tool-tab-tagline">全棧 App Builder — 自然語言直接生成 React + Supabase 應用</div>
+                    </div>
+                    <span class="verdict-badge verdict-indie">🟡 一人開發者 0→MVP 最快</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>Sandboxed cloud runtime — 自動執行並自我修錯，不需你介入</li>
+                            <li>單 prompt 同時生成前端 + 資料庫 schema + RLS policies</li>
+                            <li>GitHub sync — 保有程式碼所有權，可隨時移至 Cursor 精修</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 有限 credits</div>
+                            <div>• <strong>Starter</strong> — $25/月</div>
+                            <div>• <strong>Launch</strong> — $50/月，自訂域名</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>建立一個任務管理 App，需要：
+- 用戶登入（email + Google OAuth）
+- 任務 CRUD，支援截止日期與優先級
+- 截止日期前 24 小時 email 提醒
+- 團隊協作：每個任務可指派給不同成員
+- 使用 Supabase 作為後端</div>
+                </div>
+            </div>
+
+            <!-- BOLT -->
+            <div class="tab-panel" id="tab-bolt">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Bolt.new</div>
+                        <div class="tool-tab-tagline">StackBlitz 驅動的瞬間原型機，瀏覽器裡跑完整 Node.js</div>
+                    </div>
+                    <span class="verdict-badge verdict-proto">🟠 最快出 Demo 的工具</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>WebContainer 技術 — 瀏覽器內跑完整 Node.js，零安裝</li>
+                            <li>每次 prompt 生成完整可運行專案，不只是程式碼片段</li>
+                            <li>即時預覽 + 終端機輸出，所見即所得</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 有限 tokens/月</div>
+                            <div>• <strong>Pro</strong> — $20/月</div>
+                            <div>• 超額按用量計費</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>用 React + TypeScript 建一個待辦清單 App：
+- Drag-and-drop 排序（react-beautiful-dnd）
+- Local storage 持久化
+- 完成/未完成篩選
+- 深色模式切換
+要有漂亮的動畫效果
+
+（30 秒出可互動成品）</div>
+                </div>
+            </div>
+
+            <!-- V0 -->
+            <div class="tab-panel" id="tab-v0">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">v0 <small style="font-size:0.7em;color:var(--text-dim)">(Vercel)</small></div>
+                        <div class="tool-tab-tagline">UI 專家 — 把設計描述直接轉成 React + Shadcn/Tailwind 組件</div>
+                    </div>
+                    <span class="verdict-badge verdict-proto">🟠 UI 組件生成無敵</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>針對 React + Shadcn UI 深度優化，輸出即可用於生產</li>
+                            <li>每次生成多個版本供選擇，A/B 對比設計</li>
+                            <li>可直接複製到 Next.js 專案，或一鍵部署到 Vercel</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>Free</strong> — 200 credits/月</div>
+                            <div>• <strong>Pro</strong> — $20/月</div>
+                            <div>• Vercel 訂閱用戶有優惠</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>設計一個 SaaS Dashboard sidebar：
+- 可收合（icon-only 模式）
+- Active state 有 highlight
+- Icon + 文字標籤組合
+- 深色/淺色模式自動切換
+- 底部固定用戶頭像 + 設定選單
+使用 Shadcn + Tailwind，要有平滑動畫</div>
+                </div>
+            </div>
+
+            <!-- FIREBASE STUDIO -->
+            <div class="tab-panel" id="tab-firebase">
+                <div class="tool-tab-header">
+                    <div>
+                        <div class="tool-tab-name">Firebase Studio</div>
+                        <div class="tool-tab-tagline">Google 出品的雲端 AI IDE，深度整合 Firebase + Google Cloud</div>
+                    </div>
+                    <span class="verdict-badge verdict-indie">🟡 Google 生態最佳選擇</span>
+                </div>
+                <div class="tool-tab-body">
+                    <div class="tool-tab-box">
+                        <h4>核心技術機制</h4>
+                        <ul>
+                            <li>基於 Project IDX 演化，在瀏覽器提供完整 VSCode 環境</li>
+                            <li>整合 Gemini AI，天然支援 Google Cloud API</li>
+                            <li>Firebase Emulator Suite 即時預覽，本地測試不用部署</li>
+                        </ul>
+                    </div>
+                    <div class="tool-tab-box">
+                        <h4>定價</h4>
+                        <div class="tool-tab-pricing">
+                            <div>• <strong>免費</strong>（Google 帳號即可）</div>
+                            <div>• Firebase 本身按用量計費</div>
+                            <div>• Spark 免費方案即可開始</div>
+                        </div>
+                    </div>
+                    <div class="tab-code-block">
+<div class="tab-code-label">最佳 Prompt 範例</div>建立一個即時聊天 App：
+- Firebase Realtime Database 儲存訊息
+- 多房間系統（可建立/加入房間）
+- 用戶在線狀態（綠點/灰點）
+- Google 帳號登入
+- 支援圖片分享</div>
+                </div>
+            </div>
+
+        </div><!-- /tab-content-wrap -->
+    </section>
+
     <!-- FAQ -->
     <section id="faq">
         <span class="section-tag">常見問題</span>
@@ -2170,6 +2962,17 @@
             const panel = document.getElementById('tp-' + id);
             if (panel) panel.classList.add('active');
         }
+    </script>
+
+    <script>
+    function switchTab(e, tabId) {
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        // Update panels
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
     </script>
 </body>
 </html>
