@@ -337,7 +337,7 @@
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* ── CONTEXT ── */
+        /* ─── CONTEXT ─── */
         #context {
             background: var(--dark-2);
         }
@@ -394,7 +394,7 @@
         }
         .context-note strong { color: var(--cyan); }
 
-        /* ── FEEDBACK LOOP ── */
+        /* ─── FEEDBACK LOOP ─── */
         #loop {
             background: var(--dark);
         }
@@ -494,7 +494,7 @@
         .loop-code .ok  { color: #98c379; }
         .loop-code .dim { color: rgba(148,163,184,0.4); }
 
-        /* ── TOOLS ── */
+        /* ─── TOOLS ─── */
         #tools {
             background: var(--dark-2);
         }
@@ -555,7 +555,7 @@
         .tag-browser  { background: rgba(236,72,153,0.15);  color: #f472b6; }
         .tag-pro      { background: rgba(239,68,68,0.12);   color: #f87171; }
 
-        /* ── PROMPTING PATTERNS ── */
+        /* ─── PROMPTING PATTERNS ─── */
         #patterns {
             background: var(--dark);
         }
@@ -627,7 +627,7 @@
             color: var(--text);
         }
 
-        /* ── PITFALLS ── */
+        /* ─── PITFALLS ─── */
         #pitfalls {
             background: var(--dark-2);
         }
@@ -692,7 +692,7 @@
         }
         .pitfalls-note strong { color: var(--yellow); }
 
-        /* ── STEPS ── */
+        /* ─── STEPS ─── */
         #start {
             background: var(--dark);
         }
@@ -729,7 +729,11 @@
             font-weight: 700;
             color: #fff;
             box-shadow: 0 0 20px rgba(124,58,237,0.4);
-        }      .step-body h3 {
+        }      .step-body {
+            flex: 1;
+            padding-top: 4px;
+        }
+        .step-body h3 {
             font-size: 1.12rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -776,7 +780,7 @@
         }
         .step-tip strong { color: var(--purple-light); }
 
-        /* ── PROJECTS ── */
+        /* ─── PROJECTS ─── */
         #projects {
             background: var(--dark-2);
         }
@@ -839,7 +843,7 @@
         }
         .project-context strong { color: var(--cyan); }
 
-        /* ── FAQ ── */
+        /* ─── FAQ ─── */
         #faq {
             background: var(--dark);
         }
@@ -887,7 +891,7 @@
             padding: 0 1.5rem 1.3rem;
         }
 
-        /* ── CTA ── */
+        /* ─── CTA ─── */
         #cta {
             background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark-2) 100%);
             text-align: center;
@@ -906,20 +910,91 @@
         }
         #cta p { color: var(--text-dim); margin-bottom: 2.5rem; font-size: 1.05rem; }
 
-        /* ── FOOTER ── */
+        /* ─── FOOTER ─── */
         footer {
             background: var(--dark);
             border-top: 1px solid rgba(124,58,237,0.1);
             padding: 2rem 5%;
             text-align: center;
             color: var(--text-dim);
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+        footer a { color: var(--purple-light); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <nav>
+            <div class="logo">Claude</div>
+            <ul class="nav-links">
+                <li><a href="#what">What</a></li>
+                <li><a href="#context">Context</a></li>
+                <li><a href="#loop">Feedback Loop</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#patterns">Patterns</a></li>
+                <li><a href="#pitfalls">Pitfalls</a></li>
+                <li><a href="#start">Start</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Claude Code<br>Handbook</h1>
+            <p>Master the feedback loop. Build faster.</p>
+        </div>
+    </header>
+
+    <!-- WHAT -->
+    <section id="what">
+        <div class="content-wrapper">
+            <h2>What is Claude Code?</h2>
+            <p>Claude Code is a powerful AI-driven development environment that accelerates your workflow by automating repetitive tasks, analyzing code, and executing complex operations with precision. It combines AI intelligence with real-time feedback to help you ship faster.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Smart Agent</h3>
+                    <p>AI-powered automation that understands context and executes multi-step tasks independently.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Multiple Tools</h3>
+                    <p>Access to browsers, files, APIs, and more. One place to execute your entire workflow.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Feedback Loop</h3>
+                    <p>Real-time iteration and debugging. See results instantly and refine your approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL -->
+    <section id="what-visual">
+        <div class="content-wrapper">
+            <div class="visual-demo">
+                <div class="code-block">
+                    <div class="line"><span class="line-num">1</span><span class="keyword">const</span> claude = <span class="fn">await</span> <span class="fn">deployApp</span>();</div>
+                    <div class="line"><span class="line-num">2</span><span class="fn">claude</span>.<span class="fn">execute</span>(<span class="string">'analyze code'</span>);</div>
+                    <div class="line"><span class="line-num">3</span><span class="fn">claude</span>.<span class="fn">iterate</span>();</div>
+                    <div class="line"><span class="line-num">4</span><span class="fn">claude</span>.<span class="fn">ship</span>();<span class="cursor"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section id="context">im);
             font-size: 0.85rem;
             position: relative;
             z-index: 1;
         }
         footer span { color: var(--purple-light); }
 
-        /* ── REVEAL ── */
+        /* ─── REVEAL ─── */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -930,13 +1005,13 @@
             transform: translateY(0);
         }
 
-        /* ── ANIMATIONS ── */
+        /* ─── ANIMATIONS ─── */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── RESPONSIVE ── */
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .compare-grid,
@@ -1053,6 +1128,608 @@
             color: var(--purple-light);
             border: 1px solid rgba(124,58,237,0.3);
         }
+            /* ═════════════════════════════════════════════════════════════════════════════ */
+        /* ─── TOOLS SECTION ─── */
+        /* ═════════════════════════════════════════════════════════════════════════════ */
+
+        #tools {
+            background: linear-gradient(180deg, var(--dark-2) 0%, var(--dark) 100%);
+        }
+
+        /* Use Case Selector */
+        .uc-selector {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            background: rgba(124,58,237,0.06);
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .uc-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .uc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .uc-card {
+            background: rgba(124,58,237,0.08);
+            border: 1px solid rgba(124,58,237,0.25);
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .uc-card:hover {
+            background: rgba(124,58,237,0.18);
+            border-color: rgba(124,58,237,0.5);
+            transform: translateY(-2px);
+        }
+        .uc-card.active {
+            background: rgba(124,58,237,0.25);
+            border-color: var(--purple-light);
+        }
+        .uc-icon { font-size: 1.8rem; }
+        .uc-label {
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .uc-arrow {
+            font-size: 1.2rem;
+            color: var(--purple-light);
+            font-weight: 700;
+        }
+        .uc-result {
+            margin-top: 1.5rem;
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.25);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+        }
+        .uc-result-inner {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .uc-result-inner strong { color: var(--green); }
+        .uc-result-inner .uc-tool-chip {
+            display: inline-block;
+            background: rgba(124,58,237,0.2);
+            border: 1px solid rgba(124,58,237,0.35);
+            color: var(--purple-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin: 2px 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .uc-result-inner .uc-tool-chip:hover {
+            background: rgba(124,58,237,0.35);
+        }
+        .uc-clear {
+            margin-top: 0.8rem;
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid rgba(148,163,184,0.2);
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .uc-clear:hover { color: var(--text); border-color: rgba(148,163,184,0.5); }
+
+        /* Table */
+        .tools-table-wrap {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+        .tools-table-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .tools-filter-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .tools-filter-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tfbtn {
+            background: rgba(124,58,237,0.08);
+            border: 1px solid rgba(124,58,237,0.2);
+            color: var(--text-dim);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tfbtn:hover, .tfbtn.active {
+            background: rgba(124,58,237,0.22);
+            border-color: var(--purple-light);
+            color: var(--purple-light);
+        }
+        .tools-table-scroll {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid rgba(124,58,237,0.2);
+        }
+        .tools-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 900px;
+        }
+        .tools-table thead tr {
+            background: rgba(124,58,237,0.15);
+        }
+        .tools-table th {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--purple-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(124,58,237,0.2);
+            white-space: nowrap;
+        }
+        .tools-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid rgba(124,58,237,0.08);
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+        .tools-table tbody tr {
+            background: rgba(15,10,30,0.5);
+            transition: background 0.15s;
+        }
+        .tools-table tbody tr:hover {
+            background: rgba(124,58,237,0.08);
+        }
+        .tools-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .tools-table tr.hidden { display: none; }
+
+        .tool-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tool-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .tool-name-cell strong { font-size: 0.88rem; }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-enterprise { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .badge-pro        { background: rgba(124,58,237,0.15); color: var(--purple-light); border: 1px solid rgba(124,58,237,0.3); }
+        .badge-solo       { background: rgba(6,182,212,0.12);  color: var(--cyan); border: 1px solid rgba(6,182,212,0.25); }
+        .badge-proto      { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+        .badge-yes        { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+        .badge-no         { background: rgba(148,163,184,0.1); color: var(--text-dim); border: 1px solid rgba(148,163,184,0.2); }
+        .badge-full       { background: rgba(124,58,237,0.15); color: var(--purple-light); border: 1px solid rgba(124,58,237,0.3); }
+        .badge-partial    { background: rgba(245,158,11,0.1);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+        .badge-none       { background: rgba(239,68,68,0.1);   color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+
+        .price-tag {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            white-space: nowrap;
+        }
+        .td-best { color: var(--text); font-size: 0.82rem; }
+        .td-avoid { color: var(--text-dim); font-size: 0.8rem; }
+
+        /* Tool Tabs */
+        .tool-tabs-section {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .tool-tabs-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .tool-tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(124,58,237,0.2);
+        }
+        .ttab {
+            background: transparent;
+            border: 1px solid rgba(124,58,237,0.2);
+            color: var(--text-dim);
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ttab:hover {
+            background: rgba(124,58,237,0.1);
+            color: var(--text);
+        }
+        .ttab.active {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-color: transparent;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Tool Panels */
+        .tool-panel { display: none; }
+        .tool-panel.active { display: block; }
+
+        .tp-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(124,58,237,0.08);
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .tp-dot {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .tp-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+        .tp-tagline {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+        .tp-price-badge {
+            margin-left: auto;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            background: rgba(6,182,212,0.1);
+            border: 1px solid rgba(6,182,212,0.25);
+            color: var(--cyan);
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .tp-col { display: flex; flex-direction: column; gap: 1rem; }
+        .tp-card {
+            background: var(--dark-4);
+            border: 1px solid rgba(124,58,237,0.15);
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+        .tp-card-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.7rem;
+        }
+        .tp-card p {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .tp-card strong { color: var(--cyan); }
+
+        .tp-prompt {
+            background: rgba(0,0,0,0.3);
+            border-left: 3px solid var(--purple);
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem 1rem;
+        }
+        .tp-prompt-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tp-prompt-text {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .tp-versus {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .tp-vs-item {
+            font-size: 0.84rem;
+            line-height: 1.5;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+        }
+        .tp-vs-win {
+            background: rgba(16,185,129,0.08);
+            border-left: 3px solid var(--green);
+            color: var(--text);
+        }
+        .tp-vs-lose {
+            background: rgba(239,68,68,0.07);
+            border-left: 3px solid rgba(239,68,68,0.5);
+            color: var(--text-dim);
+        }
+
+        .tp-verdict { }
+        .verdict-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+        .verdict-enterprise { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.35); }
+        .verdict-solo       { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+        .verdict-proto      { background: rgba(6,182,212,0.12);  color: var(--cyan); border: 1px solid rgba(6,182,212,0.3); }
+
+        .tp-limits {
+            padding-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .tp-limits li {
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .uc-grid { grid-template-columns: 1fr 1fr; }
+            .tp-grid { grid-template-columns: 1fr; }
+            .tp-price-badge { display: none; }
+            .tool-tabs-nav { gap: 0.3rem; }
+            .ttab { font-size: 0.78rem; padding: 5px 12px; }
+        }
+
+        /* ─── VIBE VS AGENT SECTION ─── */
+        #vibe-vs-agent {
+            background: var(--dark-2);
+        }
+        .vva-table-wrap {
+            max-width: 960px;
+            margin: 0 auto 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(124,58,237,0.25);
+        }
+        .vva-table-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+        }
+        .vva-col-label {
+            padding: 1.2rem 1.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .vva-col-label small {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .vva-col-vibe {
+            background: rgba(124,58,237,0.18);
+            color: var(--purple-light);
+            border-right: 1px solid rgba(124,58,237,0.2);
+        }
+        .vva-col-vibe small { color: rgba(167,139,250,0.7); }
+        .vva-col-agent {
+            background: rgba(6,182,212,0.12);
+            color: var(--cyan);
+            border-left: 1px solid rgba(6,182,212,0.2);
+        }
+        .vva-col-agent small { color: rgba(6,182,212,0.7); }
+        .vva-col-dim {
+            background: rgba(255,255,255,0.04);
+            padding: 1.2rem 1.6rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        .vva-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            border-top: 1px solid rgba(124,58,237,0.12);
+        }
+        .vva-row:hover .vva-vibe,
+        .vva-row:hover .vva-agent {
+            background: rgba(124,58,237,0.06);
+        }
+        .vva-cell {
+            padding: 1rem 1.4rem;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+        }
+        .vva-vibe {
+            color: var(--text);
+            border-right: 1px solid rgba(124,58,237,0.12);
+            background: rgba(124,58,237,0.04);
+        }
+        .vva-agent {
+            color: var(--text);
+            border-left: 1px solid rgba(6,182,212,0.12);
+            background: rgba(6,182,212,0.03);
+        }
+        .vva-dim {
+            padding: 1rem 1.6rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Two cards */
+        .vva-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+        }
+        .vva-card {
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .vva-card-vibe {
+            background: rgba(124,58,237,0.07);
+            border: 1px solid rgba(124,58,237,0.25);
+        }
+        .vva-card-agent {
+            background: rgba(6,182,212,0.06);
+            border: 1px solid rgba(6,182,212,0.2);
+        }
+        .vva-card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+        .vva-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .vva-card-vibe .vva-card-title { color: var(--purple-light); }
+        .vva-card-agent .vva-card-title { color: var(--cyan); }
+        .vva-card-desc p {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 0.6rem;
+        }
+        .vva-card-desc em { color: var(--purple-light); font-style: normal; font-weight: 600; }
+        .vva-card-agent .vva-card-desc strong { color: var(--cyan); }
+        .vva-uses { margin-top: 1rem; }
+        .vva-use-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 0.3rem;
+        }
+        .vva-use-item {
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            padding: 3px 0 3px 1rem;
+            position: relative;
+            line-height: 1.5;
+        }
+        .vva-use-item::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--purple-light);
+        }
+
+        /* Quote */
+        .vva-quote {
+            max-width: 760px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(236,72,153,0.08));
+            border: 1px solid rgba(124,58,237,0.3);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .vva-quote-mark {
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            line-height: 0.5;
+            color: rgba(124,58,237,0.25);
+            margin-bottom: 0.5rem;
+        }
+        .vva-quote-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .vva-quote-text strong { color: var(--purple-light); }
+
+        @media (max-width: 768px) {
+            .vva-table-header, .vva-row { grid-template-columns: 1fr; }
+            .vva-col-dim, .vva-dim { display: none; }
+            .vva-col-label { border-right: none; border-left: none; border-bottom: 1px solid rgba(124,58,237,0.15); }
+            .vva-vibe, .vva-agent { border-right: none; border-left: none; }
+            .vva-cards { grid-template-columns: 1fr; }
+        }
+
 </style>
 </head>
 <body>
@@ -1066,11 +1743,13 @@
             <li><a href="#patterns">Prompt 技巧</a></li>
             <li><a href="#tools">工具推薦</a></li>
             <li><a href="#start">入門教學</a></li>
+            <li><a href="#tools">工具比較</a></li>
+            <li><a href="#vibe-vs-agent">原理</a></li>
         </ul>
         <button class="nav-cta" onclick="document.getElementById('start').scrollIntoView({behavior:'smooth'})">立即開始 →</button>
     </nav>
 
-    <!-- ── HERO ── -->
+    <!-- ─── HERO ─── -->
     <section id="hero">
         <span class="hero-badge">🧠 不只是「聊天」——這是一種開發方法論</span>
         <h1 class="hero-title">
@@ -1088,791 +1767,382 @@
         <div class="scroll-hint">往下滑</div>
     </section>
 
-    <!-- ── WHAT IS ── -->
+    <!-- ─── WHAT IS ─── -->
     <section id="what">
         <span class="section-tag">認識概念</span>
         <h2 class="section-title">Vibe Coding ≠ 用 AI 聊天</h2>
         <p class="section-desc">一般人對 AI 寫程式最大的誤解：以為 Vibe Coding 就是把問題貼給 ChatGPT。這兩件事在技術本質上截然不同。</p>
 
-        <div class="compare-grid reveal">
-            <div class="compare-card old">
-                <h4>💬 普通 AI 對話（Stateless Prompting）</h4>
-                <div class="compare-item">
-                    <span class="icon">✗</span>
-                    <span class="text">每次對話都是獨立的，AI 不記得你上一個 session 的程式碼</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✗</span>
-                    <span class="text">AI 只看見你貼進去的片段，不知道其他檔案的內容</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✗</span>
-                    <span class="text">沒有程式碼執行能力，無法驗證生成的程式是否真的能跑</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✗</span>
-                    <span class="text">修改一個地方，不知道有沒有影響其他檔案的依賴關係</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✗</span>
-                    <span class="text">每次都要重新解釋背景，效率極低</span>
-                </div>
-            </div>
-            <div class="compare-card new">
-                <h4>⚡ Vibe Coding（Contextual Dev Loop）</h4>
-                <div class="compare-item">
-                    <span class="icon">✓</span>
-                    <span class="text">工具索引整個 codebase，AI 理解你的資料庫結構、import 關係、型別定義</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✓</span>
-                    <span class="text">用 @ 符號直接引用特定檔案，AI 看得到完整的上下文</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✓</span>
-                    <span class="text">整合終端機，可以執行程式、讀取 stack trace，自動找出錯誤根因</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✓</span>
-                    <span class="text">跨檔案重構：改一個函式名稱，自動找到所有呼叫它的地方一起改</span>
-                </div>
-                <div class="compare-item">
-                    <span class="icon">✓</span>
-                    <span class="text">持續的開發脈絡，AI 知道你的專案現在在哪個階段</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="what-visual reveal">
-            <div><span class="line-num">1</span><span class="comment">// ── 普通 Prompt 的樣貌（stateless，每次都要重新解釋）</span></div>
-            <div><span class="line-num">2</span><span class="comment">// 你：「我有一個 React 元件，它的 state 叫 userData，幫我...(貼了 50 行)」</span></div>
-            <div><span class="line-num">3</span><span class="comment">// AI：「好的，以下是修改後的程式碼...」（不知道有沒有 TypeScript、不知道 API 結構）</span></div>
-            <div><span class="line-num">4</span>&nbsp;</div>
-            <div><span class="line-num">5</span><span class="comment">// ── Vibe Coding 的樣貌（contextual，AI 知道整個專案）</span></div>
-            <div><span class="line-num">6</span><span class="comment">// 你：「@src/components/UserProfile.tsx 幫我加一個 loading skeleton」</span></div>
-            <div><span class="line-num">7</span><span class="comment">// AI 已經知道：你用 TypeScript、你有 shadcn/ui、你的 User 型別長什麼樣、</span></div>
-            <div><span class="line-num">8</span><span class="comment">//             你的 API response 格式、你既有的 loading 元件在哪裡</span></div>
-            <div><span class="line-num">9</span>&nbsp;</div>
-            <div><span class="line-num">10</span><span class="keyword">const</span> <span class="fn">UserProfile</span> = ({ userId }: { userId: <span class="keyword">string</span> }) => {</div>
-            <div><span class="line-num">11</span>  <span class="keyword">const</span> { data, isLoading } = <span class="fn">useUser</span>(userId);  <span class="comment">// AI 知道這個 hook 在哪裡</span></div>
-            <div><span class="line-num">12</span>  <span class="keyword">if</span> (isLoading) <span class="keyword">return</span> &lt;<span class="fn">UserSkeleton</span> /&gt;;  <span class="comment">// AI 自動沿用你既有的 skeleton 元件</span></div>
-            <div><span class="line-num">13</span>  <span class="keyword">return</span> &lt;<span class="fn">ProfileCard</span> data={data} /&gt;;</div>
-            <div><span class="line-num">14</span>};<span class="cursor"></span></div>
-        </div>
-    </section>
-
-    <!-- ── CONTEXT WINDOW ── -->
-    <section id="context">
-        <span class="section-tag">技術深度</span>
-        <h2 class="section-title">Context Window 與 Codebase 感知</h2>
-        <p class="section-desc">Vibe Coding 工具的關鍵技術：讓 AI 真正「看懂」你的整個專案，而不只是你貼給它的片段</p>
-
-        <div class="context-grid">
-            <div class="reveal">
-                <div class="context-panel">
-                    <div class="context-panel-header">📁 Cursor 的 codebase 索引</div>
-                    <div class="context-panel-body">
-                        <div class="file-tree-item">📂 my-app/</div>
-                        <div class="file-tree-item file-indent">📂 src/</div>
-                        <div class="file-tree-item file-indent file-indent highlighted">📄 @api/users.ts &nbsp;<span style="color:var(--purple-light)">← 你可以直接 @ 引用</span></div>
-                        <div class="file-tree-item file-indent file-indent">📂 components/</div>
-                        <div class="file-tree-item file-indent file-indent file-indent active">📄 UserProfile.tsx &nbsp;<span style="color:var(--cyan)">← 目前編輯的檔案</span></div>
-                        <div class="file-tree-item file-indent file-indent file-indent">📄 UserSkeleton.tsx</div>
-                        <div class="file-tree-item file-indent file-indent">📂 hooks/</div>
-                        <div class="file-tree-item file-indent file-indent file-indent">📄 useUser.ts</div>
-                        <div class="file-tree-item file-indent file-indent">📂 types/</div>
-                        <div class="file-tree-item file-indent file-indent file-indent highlighted">📄 user.d.ts &nbsp;<span style="color:var(--purple-light)">← AI 知道你的型別</span></div>
-                        <div class="file-tree-item file-indent">📄 package.json</div>
-                        <div class="file-tree-item file-indent">📄 tsconfig.json</div>
-                    </div>
-                </div>
-
-                <div class="context-note" style="margin-top:1.2rem">
-                    <strong>🔍 Cursor 做了什麼？</strong><br>
-                    它用 embedding 把整個 codebase 向量化，當你提問時，自動找出最相關的程式片段放進 context window，讓 AI 生成的程式碼能無縫整合你既有的架構，不會憑空發明一個和你命名習慣不同的函式。
-                </div>
-            </div>
-
-            <div class="reveal">
-                <div class="context-panel">
-                    <div class="context-panel-header">💬 @ 引用的實際用法</div>
-                    <div class="context-panel-body" style="color:var(--text-dim)">
-                        <div style="margin-bottom:1rem">
-                            <div style="color:var(--purple-light);font-size:0.75rem;margin-bottom:4px">你輸入的 Prompt：</div>
-                            <div style="color:var(--text);line-height:1.7">「看一下 <span style="color:var(--cyan)">@types/user.d.ts</span> 和 <span style="color:var(--cyan)">@api/users.ts</span>，在 UserProfile 元件裡幫我加一個可以更新 displayName 的 inline edit 功能，要和現有的 useUser hook 整合」</div>
+               <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚙️ 核心技術機制</div>
+                            <p>ChatGPT 和 Claude 是通用型 LLM 對話介面，沒有 codebase 索引——你需要手動貼程式碼。但它們擁有最大的 context window（Claude 200k tokens）和最強的推理能力。<strong>Claude</strong> 在程式碼理解、長文件分析和邏輯推理上特別強。<strong>ChatGPT</strong> 在廣度和工具整合（Code Interpreter、DALL-E）上有優勢。兩者都支援專案功能（Projects/Memories）讓 context 跨對話保留。</p>
                         </div>
-                        <div style="border-top:1px solid var(--card-border);padding-top:1rem">
-                            <div style="color:var(--green);font-size:0.75rem;margin-bottom:4px">AI 看到的 context 包含：</div>
-                            <div style="font-size:0.8rem;line-height:1.8;color:var(--text-dim)">
-                                ✓ User 型別的所有欄位定義<br>
-                                ✓ API 的 endpoint 路徑與回傳格式<br>
-                                ✓ useUser hook 的介面與回傳值<br>
-                                ✓ 你的 TypeScript strict 設定<br>
-                                ✓ 你既有的 import 路徑慣例
+                        <div class="tp-card">
+                            <div class="tp-card-title">🔄 最適合的工作流程</div>
+                            <p>作為 Cursor/Windsurf 的補充工具，而非替代。最佳使用方式：① 架構設計討論（"我要做 XXX，哪種架構最合適？"）；② 大型單一檔案分析（把整個 1000 行檔案貼給 Claude 審查）；③ 技術選型諮詢；④ 給 Cursor 的複雜 prompt 先用 Claude 打草稿。</p>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">📬 實際 Prompt 範例</div>
+                            <div class="tp-prompt">
+                                <div class="tp-prompt-label">📋 架構討論 Prompt（給 Claude）</div>
+                                <div class="tp-prompt-text">"我在做一個 B2B SaaS，預計 100 個企業客戶，每個客戶有獨立的資料隔離需求。幫我分析 multi-tenant 架構的三個選項（shared schema / separate schema / separate database）的 trade-off，考慮我的技術棧是 Next.js + PostgreSQL + Prisma，給出具體建議。"</div>
+                            </div>
+                        </div>                    </div>
+                    <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚔️ vs Cursor</div>
+                            <div class="tp-versus">
+                                <div class="tp-vs-item tp-vs-win">ChatGPT/Claude 勝：不需要 IDE；任何裝置即用；超長 context window；最強推理能力；對話更自然靈活；適合非結構化的探索</div>
+                                <div class="tp-vs-item tp-vs-lose">Cursor 勝：真實 codebase 感知；自動修改檔案；Terminal 整合；適合連續開發迭代而非一次性問答</div>
                             </div>
                         </div>
-                        <div style="border-top:1px solid var(--card-border);padding-top:1rem;margin-top:0.5rem">
-                            <div style="color:var(--red);font-size:0.75rem;margin-bottom:4px">ChatGPT 對話框 vs. 這個差在哪：</div>
-                            <div style="font-size:0.8rem;line-height:1.8;color:var(--text-dim)">
-                                ChatGPT 只看到你貼進去的那幾行，<br>
-                                容易產生和你真實架構不相容的程式碼，<br>
-                                你還得手動調整 import 路徑和型別名稱。
+                        <div class="tp-card">
+                            <div class="tp-card-title">🏢 企業 vs 個人 Verdict</div>
+                            <div class="tp-verdict">
+                                <span class="verdict-badge verdict-solo">✅ 所有開發者的補充工具</span>
+                                <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-dim)">ChatGPT/Claude 不是 Vibe Coding 的主力工具，但是最好的「副駕駛」。建議工作流：Cursor 做日常開發，Claude 做架構討論和大局分析。企業版（Claude for Teams / ChatGPT Enterprise）有更好的隱私保護。</p>
                             </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚠️ 限制與缺點</div>
+                            <ul class="tp-limits">
+                                <li>沒有 codebase 索引，每次需要手動貼相關程式碼</li>
+                                <li>無法直接修改檔案，所有輸出都需要複製貼上</li>
+                                <li>不適合連續開發迭代（每次對話缺乏上下文連貫性）</li>
+                                <li>免費版有訊息限制和慢速回應</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="context-note" style="margin-top:1.2rem;border-color:rgba(124,58,237,0.25);background:rgba(124,58,237,0.07)">
-                    <strong style="color:var(--purple-light)">📖 Context Window 的限制</strong><br>
-                    即使是最好的工具，context window 也有上限（通常 200k tokens）。超大型 codebase 中，AI 可能無法一次看到所有相關程式碼。<strong>Checkpoint commit + 定期清理對話脈絡</strong>是避免 context 汙染的關鍵。
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── FEEDBACK LOOP ── -->
-    <section id="loop">
-        <span class="section-tag">核心機制</span>
-        <h2 class="section-title">The Feedback Loop：Vibe Coding 的真正威力</h2>
-        <p class="section-desc">這個迴圈才是 Vibe Coding 和普通 AI 對話最本質的差異——程式碼執行、錯誤讀取、自動修復，形成一個閉環</p>
-
-        <div class="loop-diagram reveal">
-            <div class="loop-steps">
-                <div class="loop-step">
-                    <div class="loop-icon write">✏️</div>
-                    <div class="loop-label write">Write</div>
-                    <div class="loop-sub">描述功能<br>AI 生成程式碼</div>
-                </div>
-                <div class="loop-arrow">→</div>
-                <div class="loop-step">
-                    <div class="loop-icon run">▶</div>
-                    <div class="loop-label run">Run</div>
-                    <div class="loop-sub">執行程式<br>看到真實結果</div>
-                </div>
-                <div class="loop-arrow">→</div>
-                <div class="loop-step">
-                    <div class="loop-icon error">⚠</div>
-                    <div class="loop-label error">Error</div>
-                    <div class="loop-sub">AI 讀取<br>Stack Trace</div>
-                </div>
-                <div class="loop-arrow">→</div>
-                <div class="loop-step">
-                    <div class="loop-icon fix">🔧</div>
-                    <div class="loop-label fix">Fix</div>
-                    <div class="loop-sub">定位根因<br>自動修復</div>
-                </div>
-                <div class="loop-arrow">→</div>
-                <div class="loop-step">
-                    <div class="loop-icon ship">🚀</div>
-                    <div class="loop-label ship">Ship</div>
-                    <div class="loop-sub">驗證通過<br>繼續下一個</div>
-                </div>
             </div>
 
-            <div class="loop-detail">
-                <div class="loop-detail-card reveal">
-                    <h4 style="color:var(--red)">⚠ 錯誤的實際樣貌</h4>
-                    <p>AI 把完整的 stack trace 讀進 context，定位到是第幾行哪個函式出錯，而不是靠你描述「好像第 23 行有問題」</p>
-                    <div class="loop-code">
-                        <span class="err">TypeError: Cannot read properties of undefined</span><br>
-                        <span class="err">&nbsp;&nbsp;at UserProfile (UserProfile.tsx:23:15)</span><br>
-                        <span class="dim">&nbsp;&nbsp;at renderWithHooks (react-dom.js:14985)</span><br>
-                        <br>
-                        <span class="ok">→ AI 診斷：useUser hook 在 data 為 undefined 時</span><br>
-                        <span class="ok">&nbsp;&nbsp;沒有 null guard，在第 23 行直接取 data.name</span><br>
-                        <span class="ok">&nbsp;&nbsp;已在 optional chaining 加上修正：data?.name</span>
-                    </div>
-                </div>
-                <div class="loop-detail-card reveal">
-                    <h4 style="color:var(--green)">✓ 這個迴圈多快？</h4>
-                    <p>有經驗的 Vibe Coders 一個迴圈只需要 30 秒到 2 分鐘。一小時內可以迭代幾十次，相當於傳統開發一整天的 debug 週期。</p>
-                    <div class="loop-code">
-                        <span class="dim"># 傳統做法</span><br>
-                        <span class="err">寫程式 → 跑 → 看錯誤 → Google →</span><br>
-                        <span class="err">Stack Overflow → 試試3個答案 → 修好</span><br>
-                        <span class="dim">⏱ 平均 30-90 分鐘</span><br>
-                        <br>
-                        <span class="dim"># Vibe Coding</span><br>
-                        <span class="ok">寫程式 → 跑 → AI 讀 trace → 修好</span><br>
-                        <span class="ok">⏱ 平均 1-3 分鐘</span>
-                    </div>
-                </div>
-                <div class="loop-detail-card reveal">
-                    <h4 style="color:var(--cyan)">💡 Checkpoint 策略</h4>
-                    <p>每完成一個可運行的功能就 commit 一次。這不只是版本控制，而是 Vibe Coding 的安全網——AI 做大型重構時，你可以隨時回到上一個穩定版本。</p>
-                    <div class="loop-code">
-                        <span class="ok">git commit -m "feat: add user skeleton"</span><br>
-                        <span class="dim"># ← 這是你的 checkpoint</span><br>
-                        <br>
-                        <span class="dim"># 接下來讓 AI 做大改動</span><br>
-                        <span class="dim"># 如果搞砸了：</span><br>
-                        <span class="err">git reset --hard HEAD</span><br>
-                        <span class="ok"># 回到安全點，重新下 prompt</span>
-                    </div>
-                </div>
-                <div class="loop-detail-card reveal">
-                    <h4 style="color:var(--yellow)">🎯 「解釋你改了什麼」的重要性</h4>
-                    <p>讓 AI 解釋每次修改的理由，是 Vibe Coding 新手最容易忽略的技巧——不只是接受結果，而是理解決策。</p>
-                    <div class="loop-code">
-                        <span class="ok">你：「改完後解釋一下</span><br>
-                        <span class="ok">&nbsp;&nbsp;&nbsp;你改了哪些檔案、為什麼」</span><br>
-                        <br>
-                        <span class="dim">AI：修改了 2 個檔案：</span><br>
-                        <span class="dim">1. UserProfile.tsx - 加 optional chaining</span><br>
-                        <span class="dim">2. useUser.ts - 加 initialData 預設值</span><br>
-                        <span class="dim">原因：避免 race condition...</span>
+        </div><!-- end tool-tabs-section -->
+
+    </section><!-- end #tools -->ell"><span class="tool-dot" style="background:#ec4899"></span><strong>GitHub Copilot</strong></div></td>
+                            <td><span class="badge badge-enterprise">企業級</span></td>
+                            <td><span class="badge badge-yes">✓ 插件</span></td>
+                            <td><span class="badge badge-partial">部分</span></td>
+                            <td><span class="badge badge-partial">Workspace</span></td>
+                            <td><span class="price-tag">$10/月</span></td>
+                            <td class="td-best">已用 VS Code/JetBrains 的企業</td>
+                            <td class="td-avoid">需要深度 agentic 自主流</td>
+                        </tr>                        <!-- Lovable -->
+                        <tr data-pos="solo,proto" data-tool="lovable">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#10b981"></span><strong>Lovable</strong></div></td>
+                            <td><span class="badge badge-solo">獨立開發</span><span class="badge badge-proto" style="margin-left:4px">原型</span></td>
+                            <td><span class="badge badge-no">✗ 不需要</span></td>
+                            <td><span class="badge badge-full">專案內完整</span></td>
+                            <td><span class="badge badge-yes">✓ 全專案</span></td>
+                            <td><span class="price-tag">免費 / $25/月</span></td>
+                            <td class="td-best">SaaS MVP、快速出前端產品</td>
+                            <td class="td-avoid">複雜後端、特殊技術棧</td>
+                        </tr>                        <!-- Bolt.new -->
+                        <tr data-pos="proto,solo" data-tool="bolt">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#a78bfa"></span><strong>Bolt.new</strong></div></td>
+                            <td><span class="badge badge-proto">快速原型</span></td>
+                            <td><span class="badge badge-no">✗ 不需要</span></td>
+                            <td><span class="badge badge-partial">專案內</span></td>
+                            <td><span class="badge badge-yes">✓ 全專案</span></td>
+                            <td><span class="price-tag">免費 token / $20/月</span></td>
+                            <td class="td-best">快速demo、前端為主專案</td>
+                            <td class="td-avoid">大型codebase、嚴格版控</td>
+                        </tr>                        <!-- v0 -->
+                        <tr data-pos="proto" data-tool="v0">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#f59e0b"></span><strong>v0 (Vercel)</strong></div></td>
+                            <td><span class="badge badge-proto">UI 原型</span></td>
+                            <td><span class="badge badge-no">✗ 不需要</span></td>
+                            <td><span class="badge badge-none">無 (UI 生成)</span></td>
+                            <td><span class="badge badge-partial">有限</span></td>
+                            <td><span class="price-tag">免費 / $20/月</span></td>
+                            <td class="td-best">React/Next.js UI 元件生成</td>
+                            <td class="td-avoid">完整產品開發、業務邏輯</td>
+                        </tr>                        <!-- Google Antigravity -->
+                        <tr data-pos="enterprise,pro" data-tool="antigravity">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#06b6d4"></span><strong>Google Antigravity</strong></div></td>
+                            <td><span class="badge badge-enterprise">企業級</span></td>
+                            <td><span class="badge badge-partial">可選</span></td>
+                            <td><span class="badge badge-full">完整索引</span></td>
+                            <td><span class="badge badge-yes">✓ 多Agent</span></td>
+                            <td><span class="price-tag">免費 Preview</span></td>
+                            <td class="td-best">多agent 編排、長流程自動化</td>
+                            <td class="td-avoid">穩定度要求高、簡單任務</td>
+                        </tr>                        <!-- Replit -->
+                        <tr data-pos="proto,solo" data-tool="replit">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#ec4899"></span><strong>Replit</strong></div></td>
+                            <td><span class="badge badge-proto">快速原型</span><span class="badge badge-solo" style="margin-left:4px">獨立</span></td>
+                            <td><span class="badge badge-no">✗ 全雲端</span></td>
+                            <td><span class="badge badge-partial">部分</span></td>
+                            <td><span class="badge badge-yes">✓ 雲端</span></td>
+                            <td><span class="price-tag">免費 / $25/月</span></td>
+                            <td class="td-best">學習、快速demo、不想設環境</td>
+                            <td class="td-avoid">大型生產專案、本地工具整合</td>
+                        </tr>
+                        <!-- ChatGPT/Claude -->
+                        <tr data-pos="solo,proto" data-tool="general-ai">
+                            <td><div class="tool-name-cell"><span class="tool-dot" style="background:#10b981"></span><strong>ChatGPT / Claude</strong></div></td>
+                            <td><span class="badge badge-solo">獨立開發</span></td>
+                            <td><span class="badge badge-no">✗ 不需要</span></td>
+                            <td><span class="badge badge-none">無 (手動貼)</span></td>
+                            <td><span class="badge badge-partial">有限</span></td>
+                            <td><span class="price-tag">免費 / $20/月</span></td>
+                            <td class="td-best">架構討論、單一檔案生成</td>
+                            <td class="td-avoid">持續開發迴圈、大型codebase</td>
+                        </tr>                <span class="verdict-badge verdict-solo">✅ 個人/小團隊首選</span>
+                                <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-dim)">企業可用 Business 版（$40/月/人），有 SSO 和 privacy mode，但合規文件不如 Windsurf 完整。對 1-5 人的產品團隊是性價比最高的選擇。</p>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚠️ 限制與缺點</div>
+                            <ul class="tp-limits">
+                                <li>Pro 每月 500 fast requests 用完後降速</li>
+                                <li>超大型 monorepo（100k+ 行）索引效能下降</li>
+                                <li>需要換 IDE，有學習成本和遷移成本</li>
+                                <li>AI 生成的程式碼仍需人工做安全審查</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ── TOOLS ── -->
-    <section id="tools">
-        <span class="section-tag">工具推薦</span>
-        <h2 class="section-title">選對工具，決定你能做到什麼層級</h2>
-        <p class="section-desc">不同工具的 context 感知能力和反饋迴圈深度差很多——這決定了你的開發效率上限</p>
-        <div class="tools-grid">
-
-            <div class="tool-card reveal">
-                <span class="tool-icon">✨</span>
-                <div class="tool-name">Cursor</div>
-                <div class="tool-en">cursor.com · 最推薦給認真用的人</div>
-                <p class="tool-desc">基於 VS Code 的 AI 編輯器，目前 Vibe Coding 生態最完整的工具。擁有完整的 codebase 索引和跨檔案感知能力。</p>
-                <div class="tool-tech">
-                    ⚡ Codebase 全索引 · @-引用任意檔案<br>
-                    🔍 Terminal 整合，直接讀取 error output<br>
-                    🔄 跨檔案重構 · Composer 多步驟代理
+            <!-- ========== WINDSURF ========== -->
+            <div class="tool-panel" id="tp-windsurf">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#06b6d4"></div>
+                    <div>
+                        <div class="tp-name">Windsurf <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">by Codeium</span></div>
+                        <div class="tp-tagline">企業合規優先的 agentic IDE——Cascade 自主執行，SOC 2 Type II，自託管選項</div>
+                    </div>
+                    <div class="tp-price-badge">免費 / Pro $15/月</div>
                 </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-pro">Pro $20/月</span>
-                    <span class="tag tag-browser">最推薦</span>
+                <div class="tp-grid">
+                    <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚙️ 核心技術機制</div>
+                            <p>Windsurf 的核心差異在於 <strong>Cascade</strong>——一個自主 agentic 執行引擎。與 Cursor 的 Composer 相比，Cascade 會更熊熊地執行操作而不反覆確認，它維護「flow state」讓 AI 能在長時間任務中保持連貫的上下文。企業版支援自託管和 Zero Data Retention（ZDR），是 HIPAA/GDPR 合規的首選。</p>                        <div class="tp-card">
+                            <div class="tp-card-title">🔄 最適合的工作流程</div>
+                            <p>企業團隊的日常開發，尤其是需要嚴格資料隱私的場景。最佳工作流：Cascade 模式下描述複雜重構任務，讓它自主跨檔案執行，完成後 review diff 確認無誤再 commit。</p>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">💬 實際 Prompt 範例</div>
+                            <div class="tp-prompt">
+                                <div class="tp-prompt-label">📋 大型重構 Prompt（適合 Cascade）</div>
+                                <div class="tp-prompt-text">「把所有使用 class components 的 React 元件重構成 functional components with hooks。從 /components 資料夾開始，保持 props interface 不變，確保所有測試繼續通過，每個檔案改完後自動跑對應的 test file。」</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚔️ vs Cursor</div>
+                            <div class="tp-versus">
+                                <div class="tp-vs-item tp-vs-win">Windsurf 勝：$15 vs $20 更便宜；Cascade 自主執行不打擾；企業 SOC 2 合規更完整；自託管選項</div>
+                                <div class="tp-vs-item tp-vs-lose">Cursor 勝：@-引用系統更精確；社群和第三方資源更豐富；diff review 介面更好</div>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">🏢 企業 vs 個人 Verdict</div>
+                            <div class="tp-verdict">
+                                <span class="verdict-badge verdict-enterprise">🏢 企業首選</span>
+                                <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-dim)">有資料隱私要求的企業（醫療、金融、法律）優先考慮 Windsurf Enterprise。個人開發者來說 $15/月 比 Cursor 便宜，Cascade 的「不打擾」風格也讓許多人偏好。</p>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚠️ 限制與缺點</div>
+                            <ul class="tp-limits">
+                                <li>社群和教程資源較 Cursor 少</li>
+                                <li>Cascade 過於自主，有時你會失去對修改的掌控感</li>
+                                <li>免費版僅 25 prompt credits/月，非常有限</li>
+                                <li>2025 年被 OpenAI 收購後，未來產品方向有不確定性</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>                        <div class="tp-card">
+                            <div class="tp-card-title">🔄 最適合的工作流程</div>
+                            <p>企業團隊的日常開發，尤其是需要嚴格資料隱私的場景。最佳工作流：Cascade 模式下描述複雜重構任務，讓它自主跨檔案執行，完成後 review diff 確認無誤再 commit。</p>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">💬 實際 Prompt 範例</div>
+                            <div class="tp-prompt">
+                                <div class="tp-prompt-label">📋 大型重構 Prompt（適合 Cascade）</div>
+                                <div class="tp-prompt-text">「把所有使用 class components 的 React 元件重構成 functional components with hooks。從 /components 資料夾開始，保持 props interface 不變，確保所有測試繼續通過，每個檔案改完後自動跑對應的 test file。」</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚔️ vs Cursor</div>
+                            <div class="tp-versus">
+                                <div class="tp-vs-item tp-vs-win">Windsurf 勝：$15 vs $20 更便宜；Cascade 自主執行不打擾；企業 SOC 2 合規更完整；自託管選項</div>
+                                <div class="tp-vs-item tp-vs-lose">Cursor 勝：@-引用系統更精確；社群和第三方資源更豐富；diff review 介面更好</div>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">🏢 企業 vs 個人 Verdict</div>
+                            <div class="tp-verdict">
+                                <span class="verdict-badge verdict-enterprise">🏢 企業首選</span>
+                                <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-dim)">有資料隱私要求的企業（醫療、金融、法律）優先考慮 Windsurf Enterprise。個人開發者來說 $15/月 比 Cursor 便宜，Cascade 的「不打擾」風格也讓許多人偏好。</p>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚠️ 限制與缺點</div>
+                            <ul class="tp-limits">
+                                <li>社群和教程資源較 Cursor 少</li>
+                                <li>Cascade 過於自主，有時你會失去對修改的掌控感</li>
+                                <li>免費版僅 25 prompt credits/月，非常有限</li>
+                                <li>2025 年被 OpenAI 收購後，未來產品方向有不確定性</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="tool-card reveal">
-                <span class="tool-icon">🤖</span>
-                <div class="tool-name">Claude</div>
-                <div class="tool-en">claude.ai · Anthropic</div>
-                <p class="tool-desc">200k token 的超長 context，可以一次貼入整個大型檔案。理解複雜需求的能力強，特別適合架構設計和程式碼審查。</p>
-                <div class="tool-tech">
-                    📄 200k token context window<br>
-                    🧠 複雜邏輯理解能力強<br>
-                    💬 支援完整中文技術討論
+            <!-- KIRO -->
+            <div class="tool-panel" id="tp-kiro">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#f59e0b"></div>
+                    <div>
+                        <div class="tp-name">Kiro <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">by Amazon AWS</span></div>
+                        <div class="tp-tagline">規格驅動開發的 agentic IDE——把「vibe coding」升級為「spec-driven production development」</div>
+                    </div>
+                    <div class="tp-price-badge">免費 Preview / Pro $20/月</div>
                 </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-chinese">支援中文</span>
-                    <span class="tag tag-beginner">新手友善</span>
-                </div>
-            </div>
-
-            <div class="tool-card reveal">
-                <span class="tool-icon">⚡</span>
-                <div class="tool-name">Bolt.new</div>
-                <div class="tool-en">bolt.new · StackBlitz</div>
-                <p class="tool-desc">全棧 AI 開發環境，在瀏覽器裡完成從 prompt 到部署的全流程。適合快速驗證想法，內建 Node.js 執行環境。</p>
-                <div class="tool-tech">
-                    🌐 瀏覽器內完整執行環境<br>
-                    ⚡ Prompt → 可執行專案，秒完成<br>
-                    🚀 直接部署到 Netlify
-                </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-browser">瀏覽器使用</span>
-                    <span class="tag tag-browser">超快速</span>
+                <div class="tp-grid">
+                    <div class="tp-col">
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚙️ 核心技術機制</div>
+                            <p>Kiro 的獨特設計是 <strong>Spec-Driven Development</strong>。當你描述一個功能需求，Kiro 不直接生成程式碼——它先生成一份「規格文件」，包含：用 EARS notation 寫的 user stories、acceptance criteria、技術設計文件（含 ERD 圖表）和有順序的 coding tasks。你確認規格後，它才執行實作。<strong>Agent Hooks</strong> 則是事件驅動自動化——儲存檔案時自動跑測試、修改 API 時自動更新文件。</p>                <span class="verdict-badge verdict-solo">✅ 個人/小團隊首選</span>
+                                <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-dim)">企業可用 Business 版（$40/月/人），有 SSO 和 privacy mode，但合規文件不如 Windsurf 完整。對 1-5 人的產品團隊是性價比最高的選擇。</p>
+                            </div>
+                        </div>
+                        <div class="tp-card">
+                            <div class="tp-card-title">⚠️ 限制與缺點</div>
+                            <ul class="tp-limits">
+                                <li>Pro 每月 500 fast requests 用完後降速</li>
+                                <li>超大型 monorepo（100k+ 行）索引效能下降</li>
+                                <li>需要換 IDE，有學習成本和遷移成本</li>
+                                <li>AI 生成的程式碼仍需人工做安全審查</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="tool-card reveal">
-                <span class="tool-icon">🌐</span>
-                <div class="tool-name">Replit</div>
-                <div class="tool-en">replit.com</div>
-                <p class="tool-desc">雲端 IDE + AI Agent，可以自主執行指令、安裝套件、修復錯誤。Replit Agent 是最接近全自動 Vibe Coding 的體驗之一。</p>
-                <div class="tool-tech">
-                    🤖 AI Agent 自主執行多步驟任務<br>
-                    📦 自動安裝 dependency<br>
-                    🔁 執行 → 看錯誤 → 自動修復
-                </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-browser">瀏覽器使用</span>
+            <!-- LOVABLE PANEL -->
+            <div class="tool-panel" id="tp-lovable">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#10b981"></div>
+                    <div>
+                        <div class="tp-name">Lovable</div>
+                        <div class="tp-tagline">从 prompt 直接生成可部署的全端 SaaS——最快从 0 到 MVP 的浏览器工具</div>
+                    </div>
+                    <div class="tp-price-badge">免費 5 msgs / Pro $25/月</div>
                 </div>
             </div>
 
-            <div class="tool-card reveal">
-                <span class="tool-icon">🎨</span>
-                <div class="tool-name">v0</div>
-                <div class="tool-en">v0.dev · Vercel</div>
-                <p class="tool-desc">專注於 UI 元件生成，輸出 shadcn/ui + Tailwind 的 React 程式碼。可以直接複製進 Cursor 繼續開發，是前端工作流的好起點。</p>
-                <div class="tool-tech">
-                    🎨 生成 shadcn/ui + Tailwind 元件<br>
-                    📋 輸出可直接整合進 Cursor 的程式碼
-                </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-browser">網頁介面</span>
+            <!-- BOLT.NEW PANEL -->
+            <div class="tool-panel" id="tp-bolt">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#a78bfa"></div>
+                    <div>
+                        <div class="tp-name">Bolt.new <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">by StackBlitz</span></div>
+                        <div class="tp-tagline">浏览器中的全端开发环境——即时 Node.js runtime，秒出可运行 demo</div>
+                    </div>
+                    <div class="tp-price-badge">免費 tokens / Pro $20/月</div>
                 </div>
             </div>
-
             
-            <div class="tool-card reveal lovable-card">
-                <span class="tool-badge">深度解析</span>
-                <span class="tool-icon">💜</span>
-                <div class="tool-name">Lovable</div>
-                <div class="tool-en">lovable.dev</div>
-                <p class="tool-desc">全棧 AI 產品建構器。一個 prompt 可同時生成 React 元件、Supabase schema、Row Level Security 政策、Edge Functions 與部署設定——從 0 到 MVP 最快的工具之一。</p>
-
-                <div class="tool-section-label">🔬 技術核心差異</div>
-                <div class="tool-tech-features">
-                    <div class="tech-feature">
-                        <div class="tf-title">☁️ 沙盒執行環境</div>
-                        <div class="tf-desc">每次修改都在雲端沙盒自動執行，無需手動 <code>npm install</code> 或 <code>node server.js</code>。寫→執行→報錯→修復的迴圈全自動且對用戶不可見——對比 Cursor 你仍需管理本地終端機。</div>
+            <!-- V0 PANEL -->
+            <div class="tool-panel" id="tp-v0">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#f59e0b"></div>
+                    <div>
+                        <div class="tp-name">v0 <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">by Vercel</span></div>
+                        <div class="tp-tagline">UI 元件的魔法生成器——Next.js + shadcn/ui + Tailwind 生態的最佳起點</div>
                     </div>
-                    <div class="tech-feature">
-                        <div class="tf-title">⚡ 單 Prompt 全棧生成</div>
-                        <div class="tf-desc">一個 prompt 可同時生成 React 元件、Supabase table、RLS 政策、Edge Functions 與部署設定。一般的 AI 助手或 Cursor 需要你跨層手動協調這些工作。</div>
-                    </div>
-                    <div class="tech-feature">
-                        <div class="tf-title">🐙 GitHub 整合作為所有權層</div>
-                        <div class="tf-desc">每次變更都走真實 GitHub PR。你擁有程式碼，可以 clone 到本機，也可以中途切換到 Cursor 繼續開發。這解決了 Bolt.new 的 lock-in 問題。</div>
-                    </div>
-                    <div class="tech-feature">
-                        <div class="tf-title">🗄️ 自然語言 → 資料庫 Schema</div>
-                        <div class="tf-desc">輸入「加入角色型存取控制的使用者驗證」，Lovable 直接翻譯成 Supabase schema migrations + RLS policies。這是比向 Cursor 下 prompt 更高層次的抽象。</div>
-                    </div>
-                </div>
-
-                <div class="tool-section-label">⚠️ 天花板在哪裡</div>
-                <div class="tool-breakdown">複雜商業邏輯、客製化 UI 互動、效能優化，以及任何需要深度 debug 可見性的任務，都會碰到 Lovable 的上限。沙盒模型意味著你無法附加 debugger 或分析效能 profile。</div>
-
-                <div class="tool-section-label">📍 定位比較</div>
-                <div class="tool-vs-grid">
-                    <div class="tool-vs-item">
-                        <span class="vs-label">vs Cursor</span>
-                        <span class="vs-desc">Lovable = 產品建構器；Cursor = 工程師工具。用 Lovable 在數小時內從 0→MVP，再視需要交棒給 Cursor 做深度客製。</span>
-                    </div>
-                    <div class="tool-vs-item">
-                        <span class="vs-label">vs Bolt.new</span>
-                        <span class="vs-desc">Lovable 有持久專案、GitHub sync、Supabase 原生整合；Bolt.new 更適合快速拋棄式原型。</span>
-                    </div>
-                    <div class="tool-vs-item">
-                        <span class="vs-label">vs v0</span>
-                        <span class="vs-desc">v0 只生成 UI（React 元件）；Lovable 是全棧，含後端資料庫與 API。</span>
-                    </div>
-                </div>
-
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-browser">瀏覽器使用</span>
-                    <span class="tag tag-fullstack">全棧生成</span>
+                    <div class="tp-price-badge">免費 / Pro $20/月</div>
                 </div>
             </div>
-
-<div class="tool-card reveal">
-                <span class="tool-icon">💬</span>
-                <div class="tool-name">ChatGPT</div>
-                <div class="tool-en">chat.openai.com · OpenAI</div>
-                <p class="tool-desc">適合一次性的程式碼生成和概念解釋，但缺乏 codebase 感知。適合用來學習概念、解釋錯誤訊息、或生成獨立的工具函式。</p>
-                <div class="tool-tech">
-                    ⚠ 無 codebase 索引（需手動貼程式碼）<br>
-                    ✓ 適合學習概念和快速問答
-                </div>
-                <div class="tool-tags">
-                    <span class="tag tag-free">有免費版</span>
-                    <span class="tag tag-chinese">支援中文</span>
-                    <span class="tag tag-beginner">適合入門</span>
+            
+            <!-- ANTIGRAVITY PANEL -->
+            <div class="tool-panel" id="tp-antigravity">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#06b6d4"></div>
+                    <div>
+                        <div class="tp-name">Google Antigravity <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">+ AI Studio</span></div>
+                        <div class="tp-tagline">多 Agent 編排的 agentic IDE——Google 的 AI-first 開發平台，支援 Gemini 3 和多模型協作</div>
+                    </div>
+                    <div class="tp-price-badge">免費 Preview (按用量計費)</div>
                 </div>
             </div>
-
+            
+            <!-- REPLIT PANEL -->
+            <div class="tool-panel" id="tp-replit">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#ec4899"></div>
+                    <div>
+                        <div class="tp-name">Replit</div>
+                        <div class="tp-tagline">雲端全能開發環境——100+ 語言、零設定、最低門檻的 AI 輔助 coding 入口</div>
+                    </div>
+                    <div class="tp-price-badge">免費 / Core $25/月</div>
+                </div>
+            </div>
+            
+            <!-- GENERAL AI PANEL -->
+            <div class="tool-panel" id="tp-general-ai">
+                <div class="tp-header">
+                    <div class="tp-dot" style="background:#10b981"></div>
+                    <div>
+                        <div class="tp-name">ChatGPT / Claude <span style="font-size:0.7em;color:var(--text-dim);font-weight:400">一般 AI 對話</span></div>
+                        <div class="tp-tagline">最靈活的 AI 思考夥伴——架構設計、程式碼審查、技術選型諮詢的最佳搭檔</div>
+                    </div>
+                    <div class="tp-price-badge">免費 / Plus $20/月</div>
+                </div>
+            </div>
         </div>
+
     </section>
 
-    <!-- ── PROMPTING PATTERNS ── -->
-    <section id="patterns">
-        <span class="section-tag">Prompt 技巧</span>
-        <h2 class="section-title">Vibe Coding 專屬的 Prompting 模式</h2>
-        <p class="section-desc">這不是通用的「如何問 AI 問題」——這些是 Vibe Coding 開發流程中，讓迭代效率倍增的具體技巧</p>
-
-        <div class="patterns-grid">
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 01</div>
-                <div class="pattern-title">先給架構脈絡，再提功能需求</div>
-                <div class="pattern-why">先讓 AI 理解你的技術棧和架構決策，之後每個 prompt 才不需要重新解釋背景，AI 生成的程式碼也更貼合你的專案。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 直接問功能</div>
-                        <div class="pattern-text">「幫我做一個登入頁面」</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 先建立脈絡</div>
-                        <div class="pattern-text">「這個專案用 Next.js 14 App Router、TypeScript、Prisma + PostgreSQL、NextAuth。驗證策略是 email/password + Google OAuth。了解後幫我做登入頁面，要整合現有的 auth.ts 設定。」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 02</div>
-                <div class="pattern-title">要求增量修改，而不是重寫</div>
-                <div class="pattern-why">要求 AI 在現有程式碼上加功能，而不是從頭重寫。這樣可以保留你手動調整過的部分，避免 AI 做出過度的改動，難以追蹤變化。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 容易造成大幅改動</div>
-                        <div class="pattern-text">「幫我重寫這個元件，加上 loading 狀態」</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 指定增量修改</div>
-                        <div class="pattern-text">「在現有的 UserList 元件裡，只加一個 isLoading prop，當它為 true 時顯示 3 個 skeleton 行。不要改其他邏輯。」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 03</div>
-                <div class="pattern-title">把大功能拆解成 AI 可執行的子任務</div>
-                <div class="pattern-why">「幫我做一個電商網站」對 AI 來說太模糊。把它拆成每次一個可驗證的子任務，AI 完成一步，你確認沒問題再繼續。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 太大一口</div>
-                        <div class="pattern-text">「幫我做一個有購物車、結帳、會員系統的電商網站」</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 拆解成步驟</div>
-                        <div class="pattern-text">Step 1：「建立商品資料的 Prisma schema」<br>Step 2：「建立取得商品列表的 API route」<br>Step 3：「做商品卡片 UI 元件」<br>（每步驟確認後再繼續）</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 04</div>
-                <div class="pattern-title">要求 AI 同步寫測試</div>
-                <div class="pattern-why">要求 AI 在生成功能的同時寫單元測試，這能讓 AI 自我驗證邏輯，也讓你的反饋迴圈更快——跑測試比手動點 UI 快 10 倍。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 只要功能</div>
-                        <div class="pattern-text">「幫我寫一個計算折扣的函式」</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 功能 + 測試同步</div>
-                        <div class="pattern-text">「寫一個 calculateDiscount 函式，處理百分比折扣和固定金額折扣，同時用 vitest 寫至少 5 個測試案例，包含邊界條件（負數、超過 100%）」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 05</div>
-                <div class="pattern-title">大改動前，先讓 AI 說計畫</div>
-                <div class="pattern-why">要求 AI 在執行之前先列出它打算修改哪些檔案、做什麼改動。你先審查計畫，沒問題再讓它執行，避免 AI 偷偷改了你不想動的地方。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 直接讓 AI 動手</div>
-                        <div class="pattern-text">「幫我把整個認證系統從 session 改成 JWT」</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 先要計畫再執行</div>
-                        <div class="pattern-text">「我要把認證從 session 改成 JWT。先不要改任何程式碼，列出你打算修改哪些檔案、每個檔案改什麼，我確認後再開始。」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pattern-card reveal">
-                <div class="pattern-num">Pattern 06</div>
-                <div class="pattern-title">保持對話中的「理解確認」</div>
-                <div class="pattern-why">定期問 AI「你對這個功能的理解是什麼？」可以早期發現 AI 是否誤解了你的需求，避免走偏後才發現，省下大量修改時間。</div>
-                <div class="pattern-example">
-                    <div class="pattern-bad">
-                        <div class="pattern-label">✗ 假設 AI 理解正確</div>
-                        <div class="pattern-text">（直接讓 AI 開始做，最後發現方向完全不對）</div>
-                    </div>
-                    <div class="pattern-good">
-                        <div class="pattern-label">✅ 先確認理解</div>
-                        <div class="pattern-text">「在開始之前，用一段話告訴我你對這個功能的理解，以及你打算用什麼技術方案，為什麼。」</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <!-- VIBE CODING vs AI AGENT -->
+    <section id="vibe-vs-agent">
+        <span class="section-tag">層次之別</span>
+        <h2 class="section-title">Vibe Coding vs AI Agent<br><span style="font-size:0.75em;color:var(--text-dim)">你是指揮家，它是全能義肢</span></h2>
+        <p class="section-desc">Vibe Coding 是大腦的「指揮藝術」，而 AI Agent 是實現藝術的「全能義肢」。兩者不是競爭關係，而是協作層次不同——搞清楚這個，你才能同時駕馭兩種力量</p>
     </section>
 
-    <!-- ── PITFALLS ── -->
-    <section id="pitfalls">
-        <span class="section-tag">誠實面對</span>
-        <h2 class="section-title">Vibe Coding 什麼時候會失靈</h2>
-        <p class="section-desc">不談限制的教學是不完整的。理解 AI 的邊界，才能讓你在關鍵時刻做出正確的判斷</p>
-
-        <div class="pitfalls-grid">
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">👻</div>
-                <div class="pitfall-title">幻覺 API 和不存在的函式</div>
-                <div class="pitfall-desc">AI 有時會自信地呼叫一個根本不存在的函式或 library，尤其是較新版本的套件。這個錯誤不會有語法錯誤提示，跑起來才爆。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">要求 AI 標出它用了哪些外部套件，跑前先查 npm/docs 確認 API 名稱正確</div>
-                </div>
-            </div>
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">🌊</div>
-                <div class="pitfall-title">跨檔案錯誤的累積效應</div>
-                <div class="pitfall-desc">AI 修了 A 檔案，卻沒注意到 B 和 C 也依賴相同的邏輯。多次迭代後，這些小不一致性層層累積，最後整個 codebase 狀態難以理解。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">每次重構後讓 AI 做「影響範圍分析」，並在修改後跑全部測試</div>
-                </div>
-            </div>
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">🌫️</div>
-                <div class="pitfall-title">長對話中的 Context 汙染</div>
-                <div class="pitfall-desc">對話越長，AI 越可能把早期的舊資訊和新需求混在一起，開始產生自相矛盾的程式碼。這是 context window 的固有限制。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">完成一個功能 checkpoint 後，開啟新的對話，貼入最新的相關程式碼重新開始</div>
-                </div>
-            </div>
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">🔐</div>
-                <div class="pitfall-title">安全盲點</div>
-                <div class="pitfall-desc">AI 生成的程式碼可能缺乏 SQL Injection 防護、把 API key 硬寫在程式碼裡、或忘記 rate limiting。AI 優化的是「能跑」，不是「安全」。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">涉及用戶資料或外部 API 的功能，明確要求 AI 做安全審查並解釋防護措施</div>
-                </div>
-            </div>
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">🐢</div>
-                <div class="pitfall-title">架構債的快速累積</div>
-                <div class="pitfall-desc">AI 習慣用最直接的方式解決當前問題，不會主動考慮長期可維護性。快速迭代 10 個功能後，codebase 可能已經難以繼續擴展。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">每隔幾個功能，讓 AI 做一次「程式碼品質審查」，主動指出重構點</div>
-                </div>
-            </div>
-
-            <div class="pitfall-card reveal">
-                <div class="pitfall-icon">🎲</div>
-                <div class="pitfall-title">不懂程式碼就無法把關</div>
-                <div class="pitfall-desc">完全不懂程式的人做 Vibe Coding，很難判斷 AI 的輸出是否合理。遇到 AI 信心滿滿但其實是錯的情況，你可能完全不知道。</div>
-                <div class="pitfall-fix">
-                    <div class="fix-label">✅ 對策</div>
-                    <div class="fix-text">用「解釋給我聽」模式：讓 AI 用白話解釋它的每個決定，培養基本的判斷能力</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="pitfalls-note reveal">
-            <strong>誠實說：Vibe Coding 不能取代工程師的判斷力。</strong><br>
-            它是一個威力強大的加速器，但你仍然需要理解「什麼叫做好的架構」、「什麼是安全問題」、「什麼時候該停下來做正確的設計」。懂得這些邊界，才能讓 Vibe Coding 發揮最大價值。
-        </div>
-    </section>
-
-    <!-- ── STEPS ── -->
-    <section id="start">
-        <span class="section-tag">入門教學</span>
-        <h2 class="section-title">從零建立你的第一個 Vibe Coding 工作流</h2>
-        <p class="section-desc">這不是「試試看貼個 prompt」的教學——這是建立一個能持續迭代的開發閉環</p>
-
-        <div class="steps-wrap">
-
-            <div class="step reveal">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <h3>安裝 Cursor，建立第一個專案</h3>
-                    <p>下載並安裝 Cursor（免費版夠用），用它開啟一個資料庫。Cursor 會自動索引你的檔案結構。如果是全新專案，先讓 AI 幫你建立基礎架構。</p>
-                    <div class="step-example">
-                        <div class="label">💬 初始架構 Prompt</div>
-                        <div class="prompt-text">「幫我建立一個 Next.js 14 App Router 專案，用 TypeScript、Tailwind CSS、shadcn/ui。建立基本的資料庫結構和必要的設定檔，並解釋每個資料庫的用途。」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <h3>建立「架構文件」讓 AI 持續理解你的專案</h3>
-                    <p>在專案根目錄建立一個 <code style="background:rgba(124,58,237,0.15);padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:0.85em">CONTEXT.md</code>，記錄你的技術棧、架構決策和命名慣例。每次開新對話時，先 @-引用這個檔案。</p>
-                    <div class="step-example">
-                        <div class="label">📄 CONTEXT.md 模板</div>
-                        <div class="prompt-text">「# 專案：MyApp<br>技術棧：Next.js 14 / TypeScript / Prisma / PostgreSQL<br>UI：shadcn/ui + Tailwind<br>認證：NextAuth v5<br>命名：元件用 PascalCase，hooks 用 useXxx，API routes 在 /app/api/...」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <h3>用「功能 → 執行 → 確認」的迴圈開發</h3>
-                    <p>每次只做一個小功能，做完就跑起來確認，沒問題就 commit。不要讓 AI 一次做太多事情——功能越小，問題越容易定位。</p>
-                    <div class="step-tip">
-                        <strong>⚡ 關鍵心態：</strong>你是 PM，AI 是工程師。你的工作是把需求切成夠小的任務，讓 AI 能一步步完成，而不是丟一個大需求等 AI 神奇地幫你全做好。
-                    </div>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h3>遇到錯誤：讓 AI 讀 Stack Trace，不要自己解讀</h3>
-                    <p>程式跑錯了？把整個錯誤訊息（包含完整 stack trace）貼給 AI，同時 @-引用相關檔案。讓 AI 定位根因，不要只說「它壞掉了」。</p>
-                    <div class="step-example">
-                        <div class="label">✗ 效率低的說法</div>
-                        <div class="prompt-text">「它報錯了，幫我修一下」</div>
-                    </div>
-                    <div class="step-example" style="margin-top:0.6rem">
-                        <div class="label">✅ 高效的錯誤回報</div>
-                        <div class="prompt-text">「跑 @UserProfile.tsx 時出現這個錯誤：[貼上完整 stack trace]。@hooks/useUser.ts 也一起看一下，找出根因並修復。」</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-num">5</div>
-                <div class="step-body">
-                    <h3>養成 Checkpoint Commit 習慣</h3>
-                    <p>每完成一個可運行的功能，立刻 commit。這是 Vibe Coding 最重要的紀律——讓你可以放心地讓 AI 做大改動，知道任何時候都能回頭。</p>
-                    <div class="step-tip">
-                        <strong>🎯 判斷標準：</strong>「如果 AI 接下來的修改完全搞砸了，我能在 30 秒內回到這個狀態嗎？」能的話才繼續。
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ── PROJECTS ── -->
-    <section id="projects">
-        <span class="section-tag">實戰專案</span>
-        <h2 class="section-title">三個有技術深度的練習專案</h2>
-        <p class="section-desc">每個專案都附上「建立架構脈絡」的 Prompt，以及可以延伸的迭代方向</p>
-        <div class="projects-grid">
-
-            <div class="project-card reveal">
-                <div class="project-header">
-                    <span class="project-emoji">🤝</span>
-                    <div class="project-meta">
-                        <div class="project-title">個人名片網頁</div>
-                        <span class="project-level">⭐ 入門 · 單一 HTML 檔</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>做一個展示個人資訊的靜態網頁。這個專案的重點是練習「增量迭代」——先做出基礎版，我們再一步步加功能。</p>
-                    <div class="project-prompt">
-                        <div class="pl">📋 建立脈絡的 Prompt</div>
-                        <div class="pt">「我要做一個個人名片網頁，放在單一 HTML 檔案裡（不用框架）。風格：深色系、現代簡約。資訊：名字 Sean、數據分析師、Email 和 LinkedIn。先做最基礎的版本，我們再慢慢加功能。」</div>
-                    </div>
-                    <div class="project-context">
-                        <strong>下一步迭代練習：</strong>做完基礎版後，試著說「加一個用 CSS animation 的技能條」、「讓頁面在手機上也好看」，體驗增量修改的流程。
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="project-header">
-                    <span class="project-emoji">📊</span>
-                    <div class="project-meta">
-                        <div class="project-title">數據視覺化 Dashboard</div>
-                        <span class="project-level">⭐⭐ 初級 · 反饋迴圈練習</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>用 Chart.js 做一個可以載入 CSV 資料的視覺化頁面。練習讓 AI 處理「資料格式不對」的錯誤，體驗真實的 debug 迴圈。</p>
-                    <div class="project-prompt">
-                        <div class="pl">📋 建立脈絡的 Prompt</div>
-                        <div class="pt">「用純 HTML + Chart.js（CDN）做一個 Dashboard，可以讓使用者上傳 CSV 檔案，自動偵測欄位名稱，用折線圖顯示數值欄位。先建立基礎架構，我們逐步加功能。」</div>
-                    </div>
-                    <div class="project-context">
-                        <strong>Feedback Loop 練習：</strong>故意上傳格式有問題的 CSV，把 console 的錯誤訊息完整貼給 AI，讓它定位並修復——這就是真實的 Vibe Coding 體驗。
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="project-header">
-                    <span class="project-emoji">🔗</span>
-                    <div class="project-meta">
-                        <div class="project-title">API 整合小工具</div>
-                        <span class="project-level">⭐⭐⭐ 進階 · 跨檔案協作</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>整合一個公開 API（例如天氣、匯率）做成實用工具。練習「先建立 API 層，再做 UI」的分層架構，以及讓 AI 理解 API 文件。</p>
-                    <div class="project-prompt">
-                        <div class="pl">📋 建立脈絡的 Prompt</div>
-                        <div class="pt">「用 HTML + vanilla JS 做一個匯率換算工具，串接 exchangerate-api.com 的免費 API。先建立 api.js（負責所有 fetch 邏輯）和 ui.js（負責 DOM 操作）兩個分離的模組，再建立 index.html，說明每個模組的職責。」</div>
-                    </div>
-                    <div class="project-context">
-                        <strong>多檔案練習：</strong>改 api.js 時，讓 AI @-引用 ui.js 確認介面契約沒有被破壞——這是跨檔案協作的真實情景。
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ── FAQ ── -->
+    <!-- FAQ -->
     <section id="faq">
         <span class="section-tag">常見問題</span>
         <h2 class="section-title">你可能想知道的事</h2>
         <div class="faq-wrap">
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    Vibe Coding 和普通 Prompt 對話差在哪？一句話說明。
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-a">普通 Prompt 是無狀態的一次性問答（stateless Q&A），每次對話都是從零開始，AI 不知道你的專案長什麼樣。Vibe Coding 是有狀態的持續開發迴圈——AI 索引了你的 codebase、能讀取執行錯誤、能跨檔案修改，更像是一位了解你整個專案的 pair programmer。</div>
+                <div class="faq-q" onclick="toggleFaq(this)">Vibe Coding 和普通 Prompt 對話差在哪？一句話說明。<span class="faq-icon">+</span></div>
+                <div class="faq-a">普通 Prompt 是無狀態的一次性問答，Vibe Coding 是有狀態的持續開發迴圈，AI 索引了你的 codebase、能讀取執行錯誤、能跨檔案修改，更像是一位了解你整個專案的 pair programmer。</div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    不懂程式的人可以學 Vibe Coding 嗎？
-                    <span class="faq-icon">+</span>
-                </div>
+                <div class="faq-q" onclick="toggleFaq(this)">不懂程式的人可以學 Vibe Coding 嗎？<span class="faq-icon">+</span></div>
                 <div class="faq-a">可以，但有一個誠實的限制：你越懂程式，Vibe Coding 的效果越好。完全不懂程式的人可以做出簡單的工具，但遇到複雜問題時可能難以判斷 AI 的輸出是否正確。建議同步學習基礎的 HTML/CSS/JavaScript 概念，即使只是閱讀層面的理解，也能讓你的 Vibe Coding 品質大幅提升。</div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    AI 有時候改了一個地方，另一個地方就壞掉，怎麼辦？
-                    <span class="faq-icon">+</span>
-                </div>
+                <div class="faq-q" onclick="toggleFaq(this)">AI 有時候改了一個地方，另一個地方就壞掉，怎麼辦？<span class="faq-icon">+</span></div>
                 <div class="faq-a">這是 Vibe Coding 中最常見的問題，叫做「跨檔案一致性問題」。解法是：① 在 prompt 中加入「確認這個修改不會影響其他呼叫這個函式的地方」；② 要求 AI 在修改後列出「受影響的檔案清單」；③ 養成寫測試的習慣，讓 AI 改完後跑測試確認沒有破壞其他功能。</div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    Cursor 和 Claude 在使用上有什麼本質差異？
-                    <span class="faq-icon">+</span>
-                </div>
+                <div class="faq-q" onclick="toggleFaq(this)">Cursor 和 Claude 在使用上有什麼本質差異？<span class="faq-icon">+</span></div>
                 <div class="faq-a">Cursor 是整合在編輯器裡的開發環境，它有完整的 codebase 索引、Terminal 整合和跨檔案感知——這是真正的 Vibe Coding 體驗。Claude 是網頁對話介面，沒有 codebase 索引，你需要手動貼程式碼，但它的 200k token context window 很長，適合分析大型單一檔案或做架構討論。兩者可以配合使用：Cursor 用來日常開發，Claude 用來做大局分析和架構設計。</div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    AI 生成的程式碼有安全問題嗎？
-                    <span class="faq-icon">+</span>
-                </div>
+                <div class="faq-q" onclick="toggleFaq(this)">AI 生成的程式碼有安全問題嗎？<span class="faq-icon">+</span></div>
                 <div class="faq-a">確實存在安全盲點。AI 優化的是「功能能跑」，不一定會主動考慮 SQL Injection 防護、XSS、API key 洩漏等安全問題。解法：① 涉及用戶資料的功能，明確要求「做完後幫我做安全審查」；② 永遠不要把 API key 或密碼直接寫在程式碼裡，要用環境變數；③ 生產環境的程式碼，找有安全背景的人做 code review。</div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
-                    Vibe Coding 做出來的東西，能到什麼規模？
-                    <span class="faq-icon">+</span>
-                </div>
+                <div class="faq-q" onclick="toggleFaq(this)">Vibe Coding 做出來的東西，能到什麼規模？<span class="faq-icon">+</span></div>
                 <div class="faq-a">個人工具、Landing Page、MVP 產品、中型 SaaS——都有成功案例。目前的限制主要在於：超過幾萬行的大型 codebase 管理困難（context window 不夠放），以及複雜的分散式系統架構還是需要有經驗的工程師設計。但對 90% 的個人專案和小團隊需求來說，Vibe Coding 已經相當夠用，而且速度遠比傳統開發快。</div>
             </div>
-
         </div>
     </section>
 
-    <!-- ── CTA ── -->
+    <!-- CTA -->
     <section id="cta">
         <div class="cta-glow"></div>
         <h2>準備好了嗎？<br>今天就建立你的第一個迴圈</h2>
@@ -1889,45 +2159,16 @@
     </footer>
 
     <script>
-        // Particles
-        const container = document.getElementById('particles');
-        const colors = ['#7c3aed','#ec4899','#06b6d4','#10b981','#f59e0b'];
-        for (let i = 0; i < 25; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 6 + 2;
-            p.style.cssText = `
-                width:${size}px;height:${size}px;
-                left:${Math.random()*100}%;
-                background:${colors[Math.floor(Math.random()*colors.length)]};
-                animation-duration:${Math.random()*20+15}s;
-                animation-delay:-${Math.random()*20}s;
-            `;
-            container.appendChild(p);
-        }
-
-        // Navbar scroll shadow
-        window.addEventListener('scroll', () => {
-            document.querySelector('nav').style.boxShadow =
-                window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.4)' : '';
-        });
-
-        // Reveal on scroll
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach((e, i) => {
-                if (e.isIntersecting) {
-                    setTimeout(() => e.target.classList.add('visible'), i * 80);
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-        // FAQ toggle
         function toggleFaq(el) {
             const item = el.parentElement;
             const isOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
             if (!isOpen) item.classList.add('open');
+        }
+        function showTool(id, btn) {
+            document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
+            const panel = document.getElementById('tp-' + id);
+            if (panel) panel.classList.add('active');
         }
     </script>
 </body>
