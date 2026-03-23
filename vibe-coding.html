@@ -74,7 +74,7 @@
   .nav-logo {
     font-size: 1.2rem;
     font-weight: 700;
-    background: var(--gradient-main);
+    background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -82,86 +82,51 @@
 
   .nav-links {
     display: flex;
-    gap: 1.5rem;
-    list-style: none;
+    gap: 2rem;
+    align-items: center;
   }
 
   .nav-links a {
-    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.85rem;
+    color: var(--text);
     transition: color 0.3s;
+    font-size: 0.95rem;
   }
 
-  .nav-links a:hover { color: var(--purple-light); }
-
-  /* ===== SECTIONS ===== */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  .nav-links a:hover {
+    color: var(--purple);
   }
 
-  .section-full {
-    max-width: 100%;
-    padding: 5rem 0;
-  }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* ===== HERO ===== */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  /* ===== HERO SECTION ===== */
+  .hero {
+    padding: 6rem 2rem;
     text-align: center;
-    padding-top: 80px;
-    max-width: 100%;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3d 100%);
+    border-bottom: 1px solid var(--border);
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(167,139,250,0.1);
-    border: 1px solid rgba(167,139,250,0.3);
-    border-radius: 50px;
-    padding: 0.4rem 1.2rem;
-    font-size: 0.85rem;
-    color: var(--purple-light);
-    margin-bottom: 2rem;
-    animation: fadeInDown 0.8s ease;
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease 0.2s both;
-  }
-
-  .hero-title .gradient-text {
-    background: var(--gradient-main);
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-    animation: fadeInUp 0.8s ease 0.4s both;
+  .hero p {
+    font-size: 1.3rem;
+    color: #888;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tags {
+    display: flex;h;
   }
 
   .hero-tags {
@@ -592,8 +557,7 @@
     color: var(--purple-light);
     margin-bottom: 0.75rem;
     display: flex;
-    align-items: center;
-    gap: 0.4rem;
+    align-items: center;    gap: 0.4rem;
   }
 
   .tool-section ul {
@@ -1026,6 +990,76 @@
     .prompt-box { font-size: 0.85rem; }
   }
 
+  /* ===== MOBILE APP BOTTOM NAV ===== */
+  .mobile-bottom-nav { display: none; }
+
+  @media (max-width: 768px) {
+    .mobile-bottom-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(13,13,26,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(167,139,250,0.22);
+      padding: 0.45rem 0;
+      padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+    }
+    .mobile-bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.66rem;
+      font-weight: 500;
+      min-width: 52px;
+      padding: 0.25rem 0.4rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .mobile-bottom-nav a .nav-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .mobile-bottom-nav a.active { color: var(--purple-light); }
+    .mobile-bottom-nav a.active .nav-icon {
+      transform: scale(1.18);
+      filter: drop-shadow(0 0 8px rgba(167,139,250,0.7));
+    }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+    #hero {
+      padding-top: 5rem;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-title { font-size: 3rem; letter-spacing: -0.02em; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .stat-item {
+      background: rgba(167,139,250,0.06);
+      border: 1px solid rgba(167,139,250,0.12);
+      border-radius: 16px;
+      padding: 0.9rem;
+    }
+    .stat-num { font-size: 2rem; }
+    .what-card, .usecase-card, .tool-section, .vs-card, .faq-item, .highlight-box { border-radius: 20px; }
+    .section-title { font-size: 1.9rem; }
+  }
+
   /* Extra small screens */
   @media (max-width: 400px) {
     .hero-title { font-size: 2.6rem; }
@@ -1073,6 +1107,30 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#cta" style="color:var(--purple-light)">開始使用</a></li>
   </ul>
+</nav>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <a href="#hero" class="active" data-section="hero">
+    <span class="nav-icon">🏠</span>
+    <span>首頁</span>
+  </a>
+  <a href="#what" data-section="what">
+    <span class="nav-icon">💡</span>
+    <span>概念</span>
+  </a>
+  <a href="#comparison" data-section="comparison">
+    <span class="nav-icon">📊</span>
+    <span>比較</span>
+  </a>
+  <a href="#tools" data-section="tools">
+    <span class="nav-icon">🛠</span>
+    <span>工具</span>
+  </a>
+  <a href="#usecases" data-section="usecases">
+    <span class="nav-icon">🎯</span>
+    <span>場景</span>
+  </a>
 </nav>
 
 <!-- HERO -->
@@ -1607,7 +1665,69 @@
         <div class="tool-section pros">
           <h4>🟢 核心優勢</h4>
           <ul>
-            <li>從 prompt 直接生成前後端整合的全端 App</li>\n            <li>內建 Supabase 整合（資料庫、認證、儲存）</li>\n            <li>可視化即時預覽，修改立即看到效果</li>\n            <li>一鍵部署到自訂域名</li>\n          </ul>\n        </div>\n        <div class="tool-section cons">\n          <h4>🔴 限制</h4>\n          <ul>\n            <li>複雜業務邏輯容易出錯，需多次迭代</li>\n            <li>不適合現有大型 codebase 的繼承開發</li>\n            <li>客製化程度受限於平台框架</li>\n            <li>Pro 版月費對輕量使用者不划算</li>\n          </ul>\n        </div>\n      </div>\n      <div class="prompt-box">\n建立一個訂閱管理 SaaS：用戶可以追蹤自己的所有訂閱服務、每月費用、到期提醒。需要：Google 登入、儀表板顯示總費用、新增/刪除訂閱、Email 提醒功能。使用現代 UI 設計。\n      </div>\n    </div>\n  </div>\n\n  <!-- BOLT.NEW -->\n  <div class="tab-pane" id="tab-bolt">\n    <div class="tool-card">\n      <div class="tool-header">\n        <div class="tool-title-area">\n          <h2>⚡ Bolt.new</h2>，使用 LocalStorage 儲存資料，設計要現代簡潔（dark mode）。
+            <li>從 prompt 直接生成前後端整合的全端 App</li>
+            <li>內建 Supabase 整合（資料庫、認證、儲存）</li>
+            <li>可視化即時預覽，修改立即看到效果</li>
+            <li>一鍵部署到自訂域名</li>
+          </ul>
+        </div>
+        <div class="tool-section cons">
+          <h4>🔴 限制</h4>
+          <ul>
+            <li>複雜業務邏輯容易出錯，需多次迭代</li>
+            <li>不適合現有大型 codebase 的繼承開發</li>
+            <li>客製化程度受限於平台框架</li>
+            <li>Pro 版月費對輕量使用者不划算</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prompt-box">
+建立一個訂閱管理 SaaS：用戶可以追蹤自己的所有訂閱服務、每月費用、到期提醒。需要：Google 登入、儀表板顯示總費用、新增/刪除訂閱、Email 提醒功能。使用現代 UI 設計。
+      </div>
+    </div>
+  </div>
+
+  <!-- BOLT.NEW -->
+  <div class="tab-pane" id="tab-bolt">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-title-area">
+          <h2>⚡ Bolt.new</h2>
+          <div class="tool-tagline">「瀏覽器裡的全端開發環境，即開即用」</div>
+        </div>
+        <div class="tool-verdict">
+          <div class="verdict-badge verdict-prototype">✦ 快速原型冠軍</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem">零設定，秒開始</div>
+        </div>
+      </div>
+      <div class="price-info">
+        <div>
+          <div class="price-label">費用方案</div>
+          <div class="price-value">免費（每日 token 限制）/ Pro $20/月 / Teams $30/用戶/月</div>
+        </div>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-section pros">
+          <h4>🟢 核心優勢</h4>
+          <ul>
+            <li>完全在瀏覽器執行，不需安裝任何環境</li>
+            <li>WebContainer 技術：真實 Node.js 環境在瀏覽器運行</li>
+            <li>支援匯入 GitHub repo 繼續開發</li>
+            <li>直接預覽並一鍵部署到 Netlify</li>
+          </ul>
+        </div>
+        <div class="tool-section cons">
+          <h4>🔴 限制</h4>
+          <ul>
+            <li>免費 token 用量有限，複雜任務容易超額</li>
+            <li>大型專案在瀏覽器內效能受限</li>
+            <li>資料庫整合需要外部服務（Supabase 等）</li>
+            <li>企業合規、私有部署支援不足</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prompt-box">
+幫我建立一個 React + TypeScript 的待辦事項 App，有新增、完成、刪除功能，支援拖曳排序，使用 LocalStorage 儲存資料，設計要現代簡潔（dark mode）。
       </div>
     </div>
   </div>
@@ -1888,8 +2008,7 @@
       </div>
     </div>
 
-    <div class="usecase-card">
-      <div class="usecase-icon">🎨</div>
+    <div class="usecase-card">      <div class="usecase-icon">🎨</div>
       <h3>前端 UI 密集型</h3>
       <p class="use-desc">需要大量設計精美的 React 元件、Landing Page、互動動畫，設計品質是最高優先。</p>
       <div class="usecase-tools">
@@ -2118,7 +2237,7 @@
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
+        const dy = particles[i].y - particles["j].y;
         const dist = Math.sqrt(dx*dx + dy*dy);
         if (dist < 120) {
           ctx.beginPath();
@@ -2200,6 +2319,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+// ===== MOBILE BOTTOM NAV ACTIVE STATE =====
+(function() {
+  const sections = ['hero','what','comparison','tools','usecases'];
+  const navLinks = document.querySelectorAll('#mobileBottomNav a[data-section]');
+  function updateActive() {
+    const scrollY = window.scrollY + window.innerHeight * 0.35;
+    let current = 'hero';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
 
 // ===== SCROLL ANIMATIONS =====
 const observer = new IntersectionObserver((entries) => {
