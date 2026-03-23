@@ -74,7 +74,7 @@
   .nav-logo {
     font-size: 1.2rem;
     font-weight: 700;
-    background: var(--gradient);
+    background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -82,51 +82,86 @@
 
   .nav-links {
     display: flex;
-    gap: 2rem;
-    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
   }
 
   .nav-links a {
+    color: var(--text-secondary);
     text-decoration: none;
-    color: var(--text);
+    font-size: 0.85rem;
     transition: color 0.3s;
-    font-size: 0.95rem;
   }
 
-  .nav-links a:hover {
-    color: var(--purple);
-  }
+  .nav-links a:hover { color: var(--purple-light); }
 
-  /* ===== HERO SECTION ===== */
-  .hero {
-    padding: 6rem 2rem;
-    text-align: center;
-    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3d 100%);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-content {
-    max-width: 800px;
+  /* ===== SECTIONS ===== */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2rem;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    background: var(--gradient);
+  .section-full {
+    max-width: 100%;
+    padding: 5rem 0;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+    max-width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--purple-light);
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .hero-title .gradient-text {
+    background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero p {
-    font-size: 1.3rem;
-    color: #888;
-    margin-bottom: 2rem;
-  }
-
-  .hero-tags {
-    display: flex;h;
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    animation: fadeInUp 0.8s ease 0.4s both;
   }
 
   .hero-tags {
@@ -557,7 +592,8 @@
     color: var(--purple-light);
     margin-bottom: 0.75rem;
     display: flex;
-    align-items: center;    gap: 0.4rem;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   .tool-section ul {
@@ -1407,11 +1443,25 @@
           <td>免費 / $25/月</td>
           <td>本地整合、企業合規</td>
         </tr>
+        <tr data-group="個人開發者,企業級">
+          <td>
+            <div class="tool-name-cell">
+              <span class="tool-name">🖥️ Claude Code</span>
+              <span class="tool-by">Anthropic</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">個人開發者</span> <span class="badge badge-orange">企業級</span></td>
+          <td><span class="badge badge-green">完整支援</span></td>
+          <td><span class="badge badge-red">不支援</span></td>
+          <td><span class="badge badge-green">完整 Agent</span></td>
+          <td>Claude Pro $20/月 或 API</td>
+          <td>UI/視覺設計、非技術人員</td>
+        </tr>
         <tr data-group="通用AI,個人開發者,非技術者">
           <td>
             <div class="tool-name-cell">
-              <span class="tool-name">💬 ChatGPT / Claude</span>
-              <span class="tool-by">OpenAI / Anthropic</span>
+              <span class="tool-name">💬 ChatGPT / Claude.ai</span>
+              <span class="tool-by">OpenAI / Anthropic（網頁對話介面）</span>
             </div>
           </td>
           <td><span class="badge badge-green">通用AI</span> <span class="badge badge-pink">非技術者</span></td>
@@ -1460,7 +1510,8 @@
     <button class="tab-btn" data-tab="v0">v0</button>
     <button class="tab-btn" data-tab="firebase">Firebase Studio</button>
     <button class="tab-btn" data-tab="replit">Replit</button>
-    <button class="tab-btn" data-tab="chatgpt">ChatGPT/Claude</button>
+    <button class="tab-btn" data-tab="claudecode">Claude Code</button>
+    <button class="tab-btn" data-tab="chatgpt">ChatGPT/Claude.ai</button>
     <button class="tab-btn" data-tab="aistudio">Google AI Studio</button>
   </div>
 
@@ -1862,11 +1913,68 @@
   </div>
 
   <!-- CHATGPT / CLAUDE -->
-  <div class="tab-pane" id="tab-chatgpt">
+  <!-- CLAUDE CODE -->
+  <div class="tab-pane" id="tab-claudecode">
     <div class="tool-card">
       <div class="tool-header">
         <div class="tool-title-area">
-          <h2>💬 ChatGPT / Claude</h2>
+          <h2>🖥️ Claude Code</h2>
+          <div class="tool-tagline">「終端機裡的全能 AI 工程師，讀懂整個 Codebase」</div>
+        </div>
+        <div class="tool-verdict">
+          <div class="verdict-badge verdict-pro">✦ 工程師首選 CLI Agent</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem">最適合複雜後端 / 重構任務</div>
+        </div>
+      </div>
+      <div class="price-info">
+        <div>
+          <div class="price-label">費用方案</div>
+          <div class="price-value">Claude Pro $20/月（含 Claude Code 額度）或直接使用 Anthropic API 按量計費</div>
+        </div>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-section pros">
+          <h4>🟢 核心優勢</h4>
+          <ul>
+            <li>直接在終端機運行，完整讀取本地 Codebase（無需手動複製貼上）</li>
+            <li>自主執行 bash 指令、安裝套件、跑測試、送 git commit</li>
+            <li>Agent 模式：可給任務讓它跑完整個開發流程</li>
+            <li>支援 MCP（Model Context Protocol）擴充工具整合</li>
+            <li>Claude 3.7 Sonnet 程式理解深度業界頂尖</li>
+            <li>企業版支援 Policy / 審計 / 多人協作</li>
+          </ul>
+        </div>
+        <div class="tool-section cons">
+          <h4>🔴 限制</h4>
+          <ul>
+            <li>純 CLI 介面，無視覺 UI 或拖拉功能</li>
+            <li>不適合零技術背景的使用者</li>
+            <li>無法直接生成 UI 元件（需搭配其他工具）</li>
+            <li>需要一定 git / terminal 基礎才能充分發揮</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-section" style="margin-top:1.5rem">
+        <h4>🎯 最適合的使用場景</h4>
+        <ul>
+          <li>大型 Codebase 重構（Claude Code 能讀取整個 repo 再行動）</li>
+          <li>複雜後端邏輯開發、API 設計與實作</li>
+          <li>自動化測試生成與 CI/CD 腳本撰寫</li>
+          <li>企業內部工具開發（支援 Policy 管控）</li>
+          <li>搭配 Cursor / Windsurf 使用：規劃用 Claude Code，UI 用 IDE</li>
+        </ul>
+      </div>
+      <div class="prompt-box">
+[Claude Code 指令範例] claude "讀取整個 /src 目錄，找出所有 API 回應沒有做錯誤處理的地方，統一加上 try/catch 並記錄 error log，最後跑 jest 測試確認沒有 regression，完成後送 git commit"
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATGPT / CLAUDE.AI -->
+  <div class="tab-pane" id="tab-chatgpt">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-title-area">       <h2>💬 ChatGPT / Claude.ai</h2>
           <div class="tool-tagline">「通用 AI 對話助手，開發的瑞士刀」</div>
         </div>
         <div class="tool-verdict">
@@ -2008,7 +2116,8 @@
       </div>
     </div>
 
-    <div class="usecase-card">      <div class="usecase-icon">🎨</div>
+    <div class="usecase-card">
+      <div class="usecase-icon">🎨</div>
       <h3>前端 UI 密集型</h3>
       <p class="use-desc">需要大量設計精美的 React 元件、Landing Page、互動動畫，設計品質是最高優先。</p>
       <div class="usecase-tools">
@@ -2237,7 +2346,7 @@
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles["j].y;
+        const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx*dx + dy*dy);
         if (dist < 120) {
           ctx.beginPath();
